@@ -1,0 +1,5 @@
+# -*- mode: gitignore; -*-
+
+# Mac-specific things to ignore:
+
+.DS_Store
