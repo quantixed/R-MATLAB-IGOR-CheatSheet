@@ -1,7 +1,9 @@
 R-MATLAB-IGOR Cheat Sheet
 =========================
 
-This is a short guide to translate commands in three IDE softwares. R, MATLAB and IGOR Pro equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details. If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/).
+This is a short guide to translate commands in three IDE softwares. R, MATLAB and IGOR Pro equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details.
+
+If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/).
 
 ----
 
@@ -13,109 +15,109 @@ This is a short guide to translate commands in three IDE softwares. R, MATLAB an
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Browse help interactively | `help.start()` | `doc` | Browse help interactively |
-| Help on using help | `help()` | `help help` *or* `doc doc` | Help on using help |
-| Help for a function | `help(plot)` *or* `?plot` | `help plot` | Help for a function |
-| Help for a toolbox/library package | `help` | `help splines` *or* `doc splines` | Help for a toolbox/library package |
-| Demonstration examples | `demo()` | `demo` | Demonstration examples |
+| Browse help interactively | `help.start()` | `doc` | `F1`<br>Help > Igor Help Browser |
+| Help on using help | `help()` | `help help` *or* `doc doc` | `DisplayHelpTopic "Help"` |
+| Help for a function | `help(plot)` *or* `?plot` | `help plot` | Right-click function name "Help for function" *or* `⎇`+`⌘`+`F1` |
+| Help for a toolbox/library package | `help` | `help splines` *or* `doc splines` |  |
+| Demonstration examples | `demo()` | `demo` | File > Example Experiments |
 | Example using a function | `example(plot)` | | Example using a function |
 
 ### Searching available documentation
 
 | Description | R              | MATLAB  | IGOR                           |
 |---|---|---|---|
-| Search help files | `help.search('plot')` | `lookfor plot` | Search help files                     |
-| Find objects by partial name | `apropos('plot')`     |                | Find objects by partial name          |
-| List available packages | `library()`           | `help`         | List available packages               |
-| Locate functions | `find(plot)`          | `which plot`   | Locate functions                      |
-| List available methods for a function | `methods(plot)`       |                | List available methods for a function |
+| Search help files | `help.search('plot')` | `lookfor plot` | `F1`<br>Help > Igor Help Browser                     |
+| Find objects by partial name | `apropos('plot')`     |                |   |
+| List available packages | `library()`           | `help`         |    |
+| Locate functions | `find(plot)`          | `which plot`   | Help > Command Help                      |
+| List available methods for a function | `methods(plot)`       |                |  |
 
 ### Using interactively
 
 | Description | R                        | MATLAB                             | IGOR          |
 |---|---|---|---|
-| Start session | `Rgui`                          |     | Start session        |
-| Run code from file | `source('foo.R')`               | `foo(.m)`                                 | Run code from file   |
-| Command history | `history()`                     |       | Command history      |
-| Save command history | `savehistory(file=".Rhistory")` | `diary on [..] diary off`                 | Save command history |
-| End session | `q(save='no')`                  | `exit` *or* `quit` | End session          |
+| Start session | `Rgui`                          |     | File > New Experiment *or*<br>`⌘`+`N`        |
+| Run code from file | `source('foo.R')`               | `foo(.m)`                                 | `FunctionName()`   |
+| Command history | `history()`                     |       | See History Area      |
+| Save command history | `savehistory(file=".Rhistory")` | `diary on [..] diary off`                 | `CreateHistoryCarbonCopy()` |
+| End session | `q(save='no')`                  | `exit` *or* `quit` | `quit()` *or* `⌘`+`Q`          |
 
 ### Operators
 
 | Description | R       | MATLAB | IGOR             |
 |---|---|---|---|
-| Help on operator syntax | `help(Syntax)` | `help -`      | Help on operator syntax |
+| Help on operator syntax | `help(Syntax)` | `help -`      | `DisplayHelpTopic "Operators"` *or*<br>`DisplayHelpTopic "MatrixOP"` |
 
 ### Arithmetic operators
 
 | Description | R       | MATLAB  | IGOR                   |
 |---|---|---|---|
-| Assignment; defining a number | `a<-1; b<-2`   | `a=1; b=2;`    | Assignment; defining a number |
-| Addition | `a + b`        | `a + b`        | Addition                      |
-| Subtraction | `a - b`        | `a - b`        | Subtraction                   |
-| Multiplication | `a * b`        | `a * b`        | Multiplication                |
-| Division | `a / b`        | `a / b`        | Division                      |
-| Power, *a*<sup>*b*</sup> | `a ^ b`        | `a .^ b`       | Power, *a*<sup>*b*</sup>      |
-| Remainder | `a %% b`       | `rem(a,b)`     | Remainder                     |
-| Integer division | `a %/% b`      |                | Integer division              |
-| Factorial, *n*! | `factorial(a)` | `factorial(a)` | Factorial, *n*!               |
+| Assignment; defining a number | `a<-1; b<-2`   | `a=1; b=2;`    | `Variable a=1, b=2` |
+| Addition | `a + b`        | `a + b`        | `a + b`                       |
+| Subtraction | `a - b`        | `a - b`        | `a - b`                   |
+| Multiplication | `a * b`        | `a * b`        | `a * b`                |
+| Division | `a / b`        | `a / b`        | `a / b`                      |
+| Power, *a*<sup>*b*</sup> | `a ^ b`        | `a .^ b`       | `a ^ b`      |
+| Remainder | `a %% b`       | `rem(a,b)`     | `mod(a,b)`                     |
+| Integer division | `a %/% b`      |                |              |
+| Factorial, *n*! | `factorial(a)` | `factorial(a)` | `factorial(a)`              |
 
 ### Relational operators
 
 | Description | R | MATLAB | IGOR           |
 |---|---|---|---|
-| Equal | `a == b` | `a == b`      | Equal                 |
-| Less than | `a < b`  | `a < b`       | Less than             |
-| Greater than | `a > b`  | `a > b`       | Greater than          |
-| Less than or equal | `a <= b` | `a <= b`      | Less than or equal    |
-| Greater than or equal | `a >= b` | `a >= b`      | Greater than or equal |
-| Not Equal | `a != b` | `a ~= b`      | Not Equal             |
+| Equal | `a == b` | `a == b`      | `a == b`                 |
+| Less than | `a < b`  | `a < b`       | `a < b`             |
+| Greater than | `a > b`  | `a > b`       | `a > b`          |
+| Less than or equal | `a <= b` | `a <= b`      | `a <= b`    |
+| Greater than or equal | `a >= b` | `a >= b`      | `a >= b` |
+| Not Equal | `a != b` | `a ~= b`      | `a != b`             |
 
 ### Logical operators
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Short-circuit logical AND | `a && b` | `a && b` | Short-circuit logical AND |
-| Short-circuit logical OR | `a || b` | `a || b` | Short-circuit logical OR |
-| Element-wise logical AND | `a & b` | `a & b` *or* `and(a,b)` | Element-wise logical AND |
-| Element-wise logical OR | `a | b` | `a | b` *or* `or(a,b)` | Element-wise logical OR |
-| Logical EXCLUSIVE OR | `xor(a, b)` | `xor(a, b)` | Logical EXCLUSIVE OR |
-| Logical NOT | `!a` | `~a` *or* `not(a)` | Logical NOT |
-| True if any element is nonzero | | `any(a)` | True if any element is nonzero |
-| True if all elements are nonzero | | `all(a)` | True if all elements are nonzero |
+| Short-circuit logical AND | `a && b` | `a && b` | `a && b` |
+| Short-circuit logical OR | `a || b` | `a || b` | `a || b` |
+| Element-wise logical AND | `a & b` | `a & b` *or* `and(a,b)` | `a & b` |
+| Element-wise logical OR | `a | b` | `a | b` *or* `or(a,b)` | `a | b` |
+| Logical EXCLUSIVE OR | `xor(a, b)` | `xor(a, b)` | `%^` |
+| Logical NOT | `!a` | `~a` *or* `not(a)` | `!a` |
+| True if any element is nonzero | | `any(a)` |  |
+| True if all elements are nonzero | | `all(a)` |  |
  
 ### root and logarithm
 
 | Description | R   | MATLAB | IGOR                   |
 |---|---|---|---|
-| Square root | `sqrt(a)`  | `sqrt(a)`     | Square root                   |
-| Logarithm, base *e* (natural) | `log(a)`   | `log(a)`      | Logarithm, base *e* (natural) |
-| Logarithm, base 10            | `log10(a)` | `log10(a)`    | Logarithm, base 10            |
-| Logarithm, base 2 (binary)    | `log2(a)`  | `log2(a)`     | Logarithm, base 2 (binary)    |
-| Exponential function          | `exp(a)`   | `exp(a)`      | Exponential function          |
+| Square root | `sqrt(a)`  | `sqrt(a)`     | `sqrt(a)`                   |
+| Logarithm, base *e* (natural) | `log(a)`   | `log(a)`      | `ln(a)` |
+| Logarithm, base 10            | `log10(a)` | `log10(a)`    | `log(a)`            |
+| Logarithm, base 2 (binary)    | `log2(a)`  | `log2(a)`     | `log2(a)`    |
+| Exponential function          | `exp(a)`   | `exp(a)`      | `exp(a)`          |
 
 ### Round off
 
 | Description | R   | MATLAB | IGOR        |
 |---|---|---|---|
-| Round              | `round(a)` | `round(a)`    | Round              |
-| Round up           | `ceil(a)`  | `ceil(a)`     | Round up           |
-| Round down         | `floor(a)` | `floor(a)`    | Round down         |
-| Round towards zero |            | `fix(a)`      | Round towards zero |
+| Round              | `round(a)` | `round(a)`    | `round(a)`  |
+| Round up           | `ceil(a)`  | `ceil(a)`     | `ceil(a)`   |
+| Round down         | `floor(a)` | `floor(a)`    | `floor(a)`  |
+| Round towards zero |            | `fix(a)`      | `trunc(a)`  |
 
 ### Mathematical constants
 
 | Description | R | MATLAB | IGOR    |
 |---|---|---|---|
-| *π* = 3.141592 | `pi`     | `pi`          | *π* = 3.141592 |
-| *e* = 2.718281 | `exp(1)` | `exp(1)`      | *e* = 2.718281 |
+| *π* = 3.141592 | `pi`     | `pi`          | `pi` |
+| *e* = 2.718281 | `exp(1)` | `exp(1)`      | `e` |
 
 ### Missing values
 
 | Description | R | MATLAB | IGOR  |
 |---|---|---|---|
-| Not a Number |          | `NaN`         | Not a Number |
-| Infinity, ∞  |          | `Inf`         | Infinity, ∞  |
+| Not a Number |          | `NaN`         | `NaN` |
+| Infinity, ∞  |          | `Inf`         | `inf`  |
 
 ### Complex numbers
 
