@@ -11,471 +11,470 @@ This is a short guide to translate commands in three IDE softwares. R, MATLAB an
 
 ### Help
 
-| R | MATLAB | Description |
-|---|---|---|
-| `help.start()` | `doc` | Browse help interactively |
-| `help()` | `help help` *or* `doc doc` | Help on using help |
-| `help(plot)` *or* `?plot` | `help plot` | Help for a function |
-| `help` | `help splines` *or* `doc splines` | Help for a toolbox/library package |
-| `demo()` | `demo` | Demonstration examples |
-| `example(plot)` | | Example using a function |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Browse help interactively | `help.start()` | `doc` | Browse help interactively |
+| Help on using help | `help()` | `help help` *or* `doc doc` | Help on using help |
+| Help for a function | `help(plot)` *or* `?plot` | `help plot` | Help for a function |
+| Help for a toolbox/library package | `help` | `help splines` *or* `doc splines` | Help for a toolbox/library package |
+| Demonstration examples | `demo()` | `demo` | Demonstration examples |
+| Example using a function | `example(plot)` | | Example using a function |
 
 ### Searching available documentation
 
-| R              | MATLAB  | Description                           |
-|-----------------------|----------------|---------------------------------------|
-| `help.search('plot')` | `lookfor plot` | Search help files                     |
-| `apropos('plot')`     |                | Find objects by partial name          |
-| `library()`           | `help`         | List available packages               |
-| `find(plot)`          | `which plot`   | Locate functions                      |
-| `methods(plot)`       |                | List available methods for a function |
+| Description | R              | MATLAB  | IGOR                           |
+|---|---|---|---|
+| Search help files | `help.search('plot')` | `lookfor plot` | Search help files                     |
+| Find objects by partial name | `apropos('plot')`     |                | Find objects by partial name          |
+| List available packages | `library()`           | `help`         | List available packages               |
+| Locate functions | `find(plot)`          | `which plot`   | Locate functions                      |
+| List available methods for a function | `methods(plot)`       |                | List available methods for a function |
 
 ### Using interactively
 
-| R                        | MATLAB                             | Description          |
-|---------------------------------|-------------------------------------------|----------------------|
-| `Rgui`                          |     | Start session        |
-| `source('foo.R')`               | `foo(.m)`                                 | Run code from file   |
-| `history()`                     |       | Command history      |
-| `savehistory(file=".Rhistory")` | `diary on [..] diary off`                 | Save command history |
-| `q(save='no')`                  | `exit` *or* `quit` | End session          |
+| Description | R                        | MATLAB                             | IGOR          |
+|---|---|---|---|
+| Start session | `Rgui`                          |     | Start session        |
+| Run code from file | `source('foo.R')`               | `foo(.m)`                                 | Run code from file   |
+| Command history | `history()`                     |       | Command history      |
+| Save command history | `savehistory(file=".Rhistory")` | `diary on [..] diary off`                 | Save command history |
+| End session | `q(save='no')`                  | `exit` *or* `quit` | End session          |
 
 ### Operators
 
-| R       | MATLAB | Description             |
-|----------------|---------------|-------------------------|
-| `help(Syntax)` | `help -`      | Help on operator syntax |
+| Description | R       | MATLAB | IGOR             |
+|---|---|---|---|
+| Help on operator syntax | `help(Syntax)` | `help -`      | Help on operator syntax |
 
 ### Arithmetic operators
 
-| R       | MATLAB  | Description                   |
-|----------------|----------------|-------------------------------|
-| `a<-1; b<-2`   | `a=1; b=2;`    | Assignment; defining a number |
-| `a + b`        | `a + b`        | Addition                      |
-| `a - b`        | `a - b`        | Subtraction                   |
-| `a * b`        | `a * b`        | Multiplication                |
-| `a / b`        | `a / b`        | Division                      |
-| `a ^ b`        | `a .^ b`       | Power, *a*<sup>*b*</sup>      |
-| `a %% b`       | `rem(a,b)`     | Remainder                     |
-| `a %/% b`      |                | Integer division              |
-| `factorial(a)` | `factorial(a)` | Factorial, *n*!               |
+| Description | R       | MATLAB  | IGOR                   |
+|---|---|---|---|
+| Assignment; defining a number | `a<-1; b<-2`   | `a=1; b=2;`    | Assignment; defining a number |
+| Addition | `a + b`        | `a + b`        | Addition                      |
+| Subtraction | `a - b`        | `a - b`        | Subtraction                   |
+| Multiplication | `a * b`        | `a * b`        | Multiplication                |
+| Division | `a / b`        | `a / b`        | Division                      |
+| Power, *a*<sup>*b*</sup> | `a ^ b`        | `a .^ b`       | Power, *a*<sup>*b*</sup>      |
+| Remainder | `a %% b`       | `rem(a,b)`     | Remainder                     |
+| Integer division | `a %/% b`      |                | Integer division              |
+| Factorial, *n*! | `factorial(a)` | `factorial(a)` | Factorial, *n*!               |
 
 ### Relational operators
 
-| R | MATLAB | Description           |
-|----------|---------------|-----------------------|
-| `a == b` | `a == b`      | Equal                 |
-| `a < b`  | `a < b`       | Less than             |
-| `a > b`  | `a > b`       | Greater than          |
-| `a <= b` | `a <= b`      | Less than or equal    |
-| `a >= b` | `a >= b`      | Greater than or equal |
-| `a != b` | `a ~= b`      | Not Equal             |
+| Description | R | MATLAB | IGOR           |
+|---|---|---|---|
+| Equal | `a == b` | `a == b`      | Equal                 |
+| Less than | `a < b`  | `a < b`       | Less than             |
+| Greater than | `a > b`  | `a > b`       | Greater than          |
+| Less than or equal | `a <= b` | `a <= b`      | Less than or equal    |
+| Greater than or equal | `a >= b` | `a >= b`      | Greater than or equal |
+| Not Equal | `a != b` | `a ~= b`      | Not Equal             |
 
 ### Logical operators
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `a && b` | `a && b` | Short-circuit logical AND |
-| `a || b` | `a || b` | Short-circuit logical OR |
-| `a & b` | `a & b` *or* `and(a,b)` | Element-wise logical AND |
-| `a | b` | `a | b` *or* `or(a,b)` | Element-wise logical OR |
-| `xor(a, b)` | `xor(a, b)` | Logical EXCLUSIVE OR |
-| `!a` | `~a` *or* `not(a)` | Logical NOT |
-| | `any(a)` | True if any element is nonzero |
-| | `all(a)` | True if all elements are nonzero |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Short-circuit logical AND | `a && b` | `a && b` | Short-circuit logical AND |
+| Short-circuit logical OR | `a || b` | `a || b` | Short-circuit logical OR |
+| Element-wise logical AND | `a & b` | `a & b` *or* `and(a,b)` | Element-wise logical AND |
+| Element-wise logical OR | `a | b` | `a | b` *or* `or(a,b)` | Element-wise logical OR |
+| Logical EXCLUSIVE OR | `xor(a, b)` | `xor(a, b)` | Logical EXCLUSIVE OR |
+| Logical NOT | `!a` | `~a` *or* `not(a)` | Logical NOT |
+| True if any element is nonzero | | `any(a)` | True if any element is nonzero |
+| True if all elements are nonzero | | `all(a)` | True if all elements are nonzero |
  
 ### root and logarithm
 
-| R   | MATLAB | Description                   |
-|------------|---------------|-------------------------------|
-| `sqrt(a)`  | `sqrt(a)`     | Square root                   |
-| `log(a)`   | `log(a)`      | Logarithm, base *e* (natural) |
-| `log10(a)` | `log10(a)`    | Logarithm, base 10            |
-| `log2(a)`  | `log2(a)`     | Logarithm, base 2 (binary)    |
-| `exp(a)`   | `exp(a)`      | Exponential function          |
+| Description | R   | MATLAB | IGOR                   |
+|---|---|---|---|
+| Square root | `sqrt(a)`  | `sqrt(a)`     | Square root                   |
+| Logarithm, base *e* (natural) | `log(a)`   | `log(a)`      | Logarithm, base *e* (natural) |
+| Logarithm, base 10            | `log10(a)` | `log10(a)`    | Logarithm, base 10            |
+| Logarithm, base 2 (binary)    | `log2(a)`  | `log2(a)`     | Logarithm, base 2 (binary)    |
+| Exponential function          | `exp(a)`   | `exp(a)`      | Exponential function          |
 
 ### Round off
 
-| R   | MATLAB | Description        |
-|------------|---------------|--------------------|
-| `round(a)` | `round(a)`    | Round              |
-| `ceil(a)`  | `ceil(a)`     | Round up           |
-| `floor(a)` | `floor(a)`    | Round down         |
-|            | `fix(a)`      | Round towards zero |
+| Description | R   | MATLAB | IGOR        |
+|---|---|---|---|
+| Round              | `round(a)` | `round(a)`    | Round              |
+| Round up           | `ceil(a)`  | `ceil(a)`     | Round up           |
+| Round down         | `floor(a)` | `floor(a)`    | Round down         |
+| Round towards zero |            | `fix(a)`      | Round towards zero |
 
 ### Mathematical constants
 
-| R | MATLAB | Description    |
-|----------|---------------|----------------|
-| `pi`     | `pi`          | *π* = 3.141592 |
-| `exp(1)` | `exp(1)`      | *e* = 2.718281 |
+| Description | R | MATLAB | IGOR    |
+|---|---|---|---|
+| *π* = 3.141592 | `pi`     | `pi`          | *π* = 3.141592 |
+| *e* = 2.718281 | `exp(1)` | `exp(1)`      | *e* = 2.718281 |
 
 ### Missing values
 
-| R | MATLAB | Description  |
-|----------|---------------|--------------|
-|          | `NaN`         | Not a Number |
-|          | `Inf`         | Infinity, ∞  |
+| Description | R | MATLAB | IGOR  |
+|---|---|---|---|
+| Not a Number |          | `NaN`         | Not a Number |
+| Infinity, ∞  |          | `Inf`         | Infinity, ∞  |
 
 ### Complex numbers
 
-| R                                            | MATLAB | Description                |
-|-----------------------------------------------------|---------------|----------------------------|
-| `1i`                                                | `i`           | Imaginary unit             |
-| `z <- 3+4i`                                         | `z = 3+4i`    | A complex number, 3 + 4*i* |
-| `abs(3+4i)` *or* `Mod(3+4i)` | `abs(z)`      | Absolute value (modulus)   |
-| `Re(3+4i)`                                          | `real(z)`     | Real part                  |
-| `Im(3+4i)`                                          | `imag(z)`     | Imaginary part             |
-| `Arg(3+4i)`                                         | `arg(z)`      | Argument                   |
-| `Conj(3+4i)`                                        | `conj(z)`     | Complex conjugate          |
+| Description | R                       | MATLAB | IGOR                |
+|---|---|---|---|
+| Imaginary unit             | `1i`                | `i`           | Imaginary unit             |
+| A complex number, 3 + 4*i* | `z <- 3+4i`         | `z = 3+4i`    | A complex number, 3 + 4*i* |
+| Absolute value (modulus)   | `abs(3+4i)` *or* `Mod(3+4i)` | `abs(z)`      | Absolute value (modulus)   |
+| Real part                  | `Re(3+4i)`          | `real(z)`     | Real part                  |
+| Imaginary part             | `Im(3+4i)`          | `imag(z)`     | Imaginary part             |
+| Argument                   | `Arg(3+4i)`         | `arg(z)`      | Argument                   |
+| Complex conjugate          | `Conj(3+4i)`        | `conj(z)`     | Complex conjugate          |
 
 ### Trigonometry
 
-| R     | MATLAB | Description                 |
-|--------------|---------------|-----------------------------|
-| `atan2(b,a)` | `atan(a,b)`   | Arctangent, arctan(*b*/*a*) |
+| Description | R     | MATLAB | IGOR                 |
+|---|---|---|---|
+| Arctangent, arctan(*b*/*a*) | `atan2(b,a)` | `atan(a,b)`   | Arctangent, arctan(*b*/*a*) |
 
 ### Generate random numbers
 
-| R                  | MATLAB    | Description                      |
-|---------------------------|------------------|----------------------------------|
-| `runif(10)`               | `rand(1,10)`     | Uniform distribution             |
-| `runif(10, min=2, max=7)` | `2+5*rand(1,10)` | Uniform: Numbers between 2 and 7 |
-| `matrix(runif(36),6)`     | `rand(6)`        | Uniform: 6,6 array               |
-| `rnorm(10)`               | `randn(1,10)`    | Normal distribution              |
+| Description | R                  | MATLAB    | IGOR                      |
+|---|---|---|---|
+| Uniform distribution             | `runif(10)`               | `rand(1,10)`     | Uniform distribution             |
+| Uniform: Numbers between 2 and 7 | `runif(10, min=2, max=7)` | `2+5*rand(1,10)` | Uniform: Numbers between 2 and 7 |
+| Uniform: 6,6 array               | `matrix(runif(36),6)`     | `rand(6)`        | Uniform: 6,6 array               |
+| Normal distribution              | `rnorm(10)`               | `randn(1,10)`    | Normal distribution              |
 
 ### Vectors
 
-| R                 | MATLAB       | Description                   |
-|--------------------------|---------------------|-------------------------------|
-| `a <- c(2,3,4,5)`        | `a=[2 3 4 5];`      | Row vector, 1 × *n*-matrix    |
-| `adash <- t(c(2,3,4,5))` | `adash=[2 3 4 5]';` | Column vector, *m* × 1-matrix |
+| Description | R                 | MATLAB       | IGOR                   |
+|---|---|---|---|
+| Row vector, 1 × *n*-matrix    | `a <- c(2,3,4,5)`        | `a=[2 3 4 5];`      | Row vector, 1 × *n*-matrix    |
+| Column vector, *m* × 1-matrix | `adash <- t(c(2,3,4,5))` | `adash=[2 3 4 5]';` | Column vector, *m* × 1-matrix |
 
 ### Sequences
 
-| R                                       | MATLAB      | Description                          |
-|------------------------------------------------|--------------------|--------------------------------------|
-| `seq(10)` *or* `1:10`   | `1:10`             | 1,2,3, … ,10                         |
-| `seq(0,length=10)`                             | `0:9`              | 0.0,1.0,2.0, … ,9.0                  |
-| `seq(1,10,by=3)`                               | `1:3:10`           | 1,4,7,10                             |
-| `seq(10,1)` *or* `10:1` | `10:-1:1`          | 10,9,8, … ,1                         |
-| `seq(from=10,to=1,by=-3)`                      | `10:-3:1`          | 10,7,4,1                             |
-| `seq(1,10,length=7)`                           | `linspace(1,10,7)` | Linearly spaced vector of n=7 points |
-| `rev(a)`                                       | `reverse(a)`       | Reverse                              |
-|                                                | `a(:) = 3`         | Set all values to same scalar value  |
+| Description | R                                       | MATLAB      | IGOR                          |
+|---|---|---|---|
+| 1,2,3, … ,10                         | `seq(10)` *or* `1:10`   | `1:10`             | 1,2,3, … ,10                         |
+| 0.0,1.0,2.0, … ,9.0                  | `seq(0,length=10)`                             | `0:9`              | 0.0,1.0,2.0, … ,9.0                  |
+| 1,4,7,10                             | `seq(1,10,by=3)`                               | `1:3:10`           | 1,4,7,10                             |
+| 10,9,8, … ,1                         | `seq(10,1)` *or* `10:1` | `10:-1:1`          | 10,9,8, … ,1                         |
+| 10,7,4,1                             | `seq(from=10,to=1,by=-3)`                      | `10:-3:1`          | 10,7,4,1                             |
+| Linearly spaced vector of n=7 points | `seq(1,10,length=7)`                           | `linspace(1,10,7)` | Linearly spaced vector of n=7 points |
+| Reverse                              | `rev(a)`                                       | `reverse(a)`       | Reverse                              |
+| Set all values to same scalar value  |                                                | `a(:) = 3`         | Set all values to same scalar value  |
 
 ### Concatenation (vectors)
 
-| R   | MATLAB | Description             |
-|------------|---------------|-------------------------|
-| `c(a,a)`   | `[a a]`       | Concatenate two vectors |
-| `c(1:4,a)` | `[1:4 a]`     |                         |
+| Description | R   | MATLAB | IGOR             |
+|---|---|---|---|
+| Concatenate two vectors | `c(a,a)`   | `[a a]`       | Concatenate two vectors |
+|                         | `c(1:4,a)` | `[1:4 a]`     |                         |
 
 ### Repeating
 
-| R         | MATLAB | Description         |
-|------------------|---------------|---------------------|
-| `rep(a,times=2)` | `[a a]`       | 1 2 3, 1 2 3        |
-| `rep(a,each=3)`  |               | 1 1 1, 2 2 2, 3 3 3 |
-| `rep(a,a)`       |               | 1, 2 2, 3 3 3       |
+| Description | R         | MATLAB | IGOR         |
+|---|---|---|---|
+| 1 2 3, 1 2 3        | `rep(a,times=2)` | `[a a]`       | 1 2 3, 1 2 3        |
+| 1 1 1, 2 2 2, 3 3 3 | `rep(a,each=3)`  |               | 1 1 1, 2 2 2, 3 3 3 |
+| 1, 2 2, 3 3 3       | `rep(a,a)`       |               | 1, 2 2, 3 3 3       |
 
 ### Miss those elements out
 
-| R          | MATLAB  | Description            |
-|-------------------|----------------|------------------------|
-| `a[-1]`           | `a(2:end)`     | miss the first element |
-| `a[-10]`          | `a([1:9])`     | miss the tenth element |
-| `a[-seq(1,50,3)]` |                | miss 1,4,7, …          |
-|                   | `a(end)`       | last element           |
-|                   | `a(end-1:end)` | last two elements      |
+| Description | R          | MATLAB  | IGOR            |
+|---|---|---|---|
+| miss the first element | `a[-1]`           | `a(2:end)`     | miss the first element |
+| miss the tenth element | `a[-10]`          | `a([1:9])`     | miss the tenth element |
+| miss 1,4,7, …          | `a[-seq(1,50,3)]` |                | miss 1,4,7, …          |
+| last element           |                   | `a(end)`       | last element           |
+| last two elements      |                   | `a(end-1:end)` | last two elements      |
 
 ### Maximum and minimum
 
-| R                          | MATLAB    | Description                      |
-|-----------------------------------|------------------|----------------------------------|
-| `pmax(a,b)`                       | `max(a,b)`       | pairwise max                     |
-| `max(a,b)`                        | `max([a b])`     | max of all values in two vectors |
-| `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` |                                  |
+| Description | R                          | MATLAB    | IGOR                      |
+|---|---|---|---|
+| pairwise max                     | `pmax(a,b)`                       | `max(a,b)`       | pairwise max                     |
+| max of all values in two vectors | `max(a,b)`                        | `max([a b])`     | max of all values in two vectors |
+| | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` |                                  |
 
 ### Vector multiplication
 
-| R | MATLAB | Description                   |
-|----------|---------------|-------------------------------|
-| `a*a`    | `a.*a`        | Multiply two vectors          |
-|          | `dot(u,v)`    | Vector dot product, *u* ⋅ *v* |
+| Description | R | MATLAB | IGOR                   |
+|---|---|---|---|
+| Multiply two vectors          | `a*a`    | `a.*a`        | Multiply two vectors          |
+| Vector dot product, *u* ⋅ *v* |          | `dot(u,v)`    | Vector dot product, *u* ⋅ *v* |
 
 ### Matrices
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `rbind(c(2,3),c(4,5))`
-`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | Define a matrix |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Define a matrix | `rbind(c(2,3),c(4,5))`<br>`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | Define a matrix |
 
 ### Concatenation (matrices); rbind and cbind
 
-| R         | MATLAB  | Description                          |
-|------------------|----------------|--------------------------------------|
-| `rbind(a,b)`     | `[a ; b]`      | Bind rows                            |
-| `cbind(a,b)`     | `[a , b]`      | Bind columns                         |
-|                  | `[a(:), b(:)]` | Concatenate matrices into one vector |
-| `rbind(1:4,1:4)` | `[1:4 ; 1:4]`  | Bind rows (from vectors)             |
-| `cbind(1:4,1:4)` | `[1:4 ; 1:4]'` | Bind columns (from vectors)          |
+| Description | R         | MATLAB  | IGOR                          |
+|---|---|---|---|
+| Bind rows                            | `rbind(a,b)`     | `[a ; b]`      | Bind rows                            |
+| Bind columns                         | `cbind(a,b)`     | `[a , b]`      | Bind columns                         |
+| Concatenate matrices into one vector |                  | `[a(:), b(:)]` | Concatenate matrices into one vector |
+| Bind rows (from vectors)             | `rbind(1:4,1:4)` | `[1:4 ; 1:4]`  | Bind rows (from vectors)             |
+| Bind columns (from vectors)          | `cbind(1:4,1:4)` | `[1:4 ; 1:4]'` | Bind columns (from vectors)          |
 
 ### Array creation
 
-| R                                                      | MATLAB   | Description             |
-|---------------------------------------------------------------|-----------------|-------------------------|
-| `matrix(0,3,5)` *or* `array(0,c(3,5))` | `zeros(3,5)`    | 0 filled array          |
-| `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | 1 filled array          |
-| `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | Any number filled array |
-| `diag(1,3)`                                                   | `eye(3)`        | Identity matrix         |
-| `diag(c(4,5,6))`                                              | `diag([4 5 6])` | Diagonal                |
-|                                                               | `magic(3)`      | Magic squares; Lo Shu   |
+| Description | R                                                      | MATLAB   | IGOR             |
+|---|---|---|---|
+| 0 filled array          | `matrix(0,3,5)` *or* `array(0,c(3,5))` | `zeros(3,5)`    | 0 filled array          |
+| 1 filled array          | `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | 1 filled array          |
+| Any number filled array | `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | Any number filled array |
+| Identity matrix         | `diag(1,3)`                                                   | `eye(3)`        | Identity matrix         |
+| Diagonal                | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | Diagonal                |
+| Magic squares; Lo Shu   |                                                               | `magic(3)`      | Magic squares; Lo Shu   |
 
 ### Reshape and flatten matrices
 
-| R | MATLAB | Description |
-| --- | ---| --- |
-| `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | Reshaping (rows first) |
-| `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | Reshaping (columns first) |
-| `as.vector(t(a))` | `a'(:)` | Flatten to vector (by rows, like comics) |
-| `as.vector(a)` | `a(:)` | Flatten to vector (by columns) |
-| `a[row(a) <= col(a)]` | `vech(a)` | Flatten upper triangle (by columns) |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | Reshaping (rows first) |
+| Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | Reshaping (columns first) |
+| Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | Flatten to vector (by rows, like comics) |
+| Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | Flatten to vector (by columns) |
+| Flatten upper triangle (by columns) | `a[row(a) <= col(a)]` | `vech(a)` | Flatten upper triangle (by columns) |
 
 ### Shared data (slicing)
 
-| R | MATLAB | Description |
-|----------|---------------|-------------|
-| `b = a`  | `b = a`       | Copy of a   |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Copy of a   | `b = a`  | `b = a`       | Copy of a   |
 
 ### Indexing and accessing elements (Python: slicing)
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | Input is a 3,4 array |
-| `a[2,3]` | `a(2,3)` | Element 2,3 (row,col) |
-| `a[1,]` | `a(1,:)` | First row |
-| `a[,1]` | `a(:,1)` | First column |
- `a([1 3],[1 4]);` | Array as indices |
-| `a[-1,]` | `a(2:end,:)` | All, except first row |
- `a(end-1:end,:)` | Last two rows |
- `a(1:2:end,:)` | Strides: Every other row |
-| `a[-2,-3]` | All, except row,column (2,3) |
-| `a[,-2]` | `a(:,[1 3 4])` | Remove one column |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Input is a 3,4 array | `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),`<br>`c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | Input is a 3,4 array |
+| Element 2,3 (row,col) | `a[2,3]` | `a(2,3)` | Element 2,3 (row,col) |
+| First row | `a[1,]` | `a(1,:)` | First row |
+| First column | `a[,1]` | `a(:,1)` | First column |
+| Array as indices | | `a([1 3],[1 4]);` | Array as indices |
+| All, except first row | `a[-1,]` | `a(2:end,:)` | All, except first row |
+| Last two rows | | `a(end-1:end,:)` | Last two rows |
+| Strides: Every other row | | `a(1:2:end,:)` | Strides: Every other row |
+| All, except row,column (2,3) | `a[-2,-3]` | | All, except row,column (2,3) |
+| Remove one column | `a[,-2]` | `a(:,[1 3 4])` | Remove one column |
 
 ### Assignment
 
-| R               | MATLAB          | Description                            |
-|------------------------|------------------------|----------------------------------------|
-| `a[,1] <- 99`          | `a(:,1) = 99`          |                                        |
-| `a[,1] <- c(99,98,97)` | `a(:,1) = [99 98 97]'` |                                        |
-| `a[a>90] <- 90`        | `a(a>90) = 90;`        | Clipping: Replace all elements over 90 |
+| Description | R               | MATLAB          | IGOR                            |
+|---|---|---|---|
+| | `a[,1] <- 99`          | `a(:,1) = 99`          |                                        |
+| | `a[,1] <- c(99,98,97)` | `a(:,1) = [99 98 97]'` |                                        |
+| Clipping: Replace all elements over 90 | `a[a>90] <- 90`        | `a(a>90) = 90;`        | Clipping: Replace all elements over 90 |
 
 ### Transpose and inverse
 
-| R           | MATLAB                                    | Description             |
-|--------------------|--------------------------------------------------|-------------------------|
-| `t(a)`             | `a'`                                             | Transpose               |
-|                    | `a.'` *or* `transpose(a)` | Non-conjugate transpose |
-| `det(a)`           | `det(a)`                                         | Determinant             |
-| `solve(a)`         | `inv(a)`                                         | Inverse                 |
-| `ginv(a)`          | `pinv(a)`                                        | Pseudo-inverse          |
-|                    | `norm(a)`                                        | Norms                   |
-| `eigen(a)$values`  | `eig(a)`                                         | Eigenvalues             |
-| `svd(a)$d`         | `svd(a)`                                         | Singular values         |
-|                    | `chol(a)`                                        | Cholesky factorization  |
-| `eigen(a)$vectors` | `[v,l] = eig(a)`                                 | Eigenvectors            |
-| `rank(a)`          | `rank(a)`                                        | Rank                    |
+| Description | R           | MATLAB                                    | IGOR             |
+|---|---|---|---|
+| Transpose               | `t(a)`             | `a'`                                             | Transpose               |
+| Non-conjugate transpose |                    | `a.'` *or* `transpose(a)` | Non-conjugate transpose |
+| Determinant             | `det(a)`           | `det(a)`                                         | Determinant             |
+| Inverse                 | `solve(a)`         | `inv(a)`                                         | Inverse                 |
+| Pseudo-inverse          | `ginv(a)`          | `pinv(a)`                                        | Pseudo-inverse          |
+| Norms                   |                    | `norm(a)`                                        | Norms                   |
+| Eigenvalues             | `eigen(a)$values`  | `eig(a)`                                         | Eigenvalues             |
+| Singular values         | `svd(a)$d`         | `svd(a)`                                         | Singular values         |
+| Cholesky factorization  |                    | `chol(a)`                                        | Cholesky factorization  |
+| Eigenvectors            | `eigen(a)$vectors` | `[v,l] = eig(a)`                                 | Eigenvectors            |
+| Rank                    | `rank(a)`          | `rank(a)`                                        | Rank                    |
 
 ### Sum
 
-| R            | MATLAB | Description              |
-|---------------------|---------------|--------------------------|
-| `apply(a,2,sum)`    | `sum(a)`      | Sum of each column       |
-| `apply(a,1,sum)`    | `sum(a')`     | Sum of each row          |
-| `sum(a)`            | `sum(sum(a))` | Sum of all elements      |
-| `apply(a,2,cumsum)` | `cumsum(a)`   | Cumulative sum (columns) |
+| Description | R            | MATLAB | IGOR              |
+|---|---|---|---|
+| Sum of each column       | `apply(a,2,sum)`    | `sum(a)`      | Sum of each column       |
+| Sum of each row          | `apply(a,1,sum)`    | `sum(a')`     | Sum of each row          |
+| Sum of all elements      | `sum(a)`            | `sum(sum(a))` | Sum of all elements      |
+| Cumulative sum (columns) | `apply(a,2,cumsum)` | `cumsum(a)`   | Cumulative sum (columns) |
 
 ### Sorting
 
-| R             | MATLAB                   | Description              |
-|----------------------|---------------------------------|--------------------------|
-|                      | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | Example data             |
-| `t(sort(a))`         | `sort(a(:))`                    | Flat and sorted          |
-| `apply(a,2,sort)`    | `sort(a)`                       | Sort each column         |
-| `t(apply(a,1,sort))` | `sort(a')'`                     | Sort each row            |
-|                      | `sortrows(a,1)`                 | Sort rows (by first row) |
-| `order(a)`           |                                 | Sort, return indices     |
+| Description | R             | MATLAB                   | IGOR              |
+|---|---|---|---|
+| Example data             |                      | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | Example data             |
+| Flat and sorted          | `t(sort(a))`         | `sort(a(:))`                    | Flat and sorted          |
+| Sort each column         | `apply(a,2,sort)`    | `sort(a)`                       | Sort each column         |
+| Sort each row            | `t(apply(a,1,sort))` | `sort(a')'`                     | Sort each row            |
+| Sort rows (by first row) |                      | `sortrows(a,1)`                 | Sort rows (by first row) |
+| Sort, return indices     | `order(a)`           |                                 | Sort, return indices     |
 
 ### Maximum and minimum
 
-| R                    | MATLAB    | Description        |
-|-----------------------------|------------------|--------------------|
-| `apply(a,2,max)`            | `max(a)`         | max in each column |
-| `apply(a,1,max)`            | `max(a')`        | max in each row    |
-| `max(a)`                    | `max(max(a))`    | max in array       |
-| `i <- apply(a,1,which.max)` | `[v i] = max(a)` | return indices, i  |
-| `pmax(b,c)`                 | `max(b,c)`       | pairwise max       |
-| `apply(a,2,cummax)`         | `cummax(a)`      |                    |
+| Description | R                    | MATLAB    | IGOR        |
+|---|---|---|---|
+| max in each column | `apply(a,2,max)`            | `max(a)`         | max in each column |
+| max in each row    | `apply(a,1,max)`            | `max(a')`        | max in each row    |
+| max in array       | `max(a)`                    | `max(max(a))`    | max in array       |
+| return indices, i  | `i <- apply(a,1,which.max)` | `[v i] = max(a)` | return indices, i  |
+| pairwise max       | `pmax(b,c)`                 | `max(b,c)`       | pairwise max       |
+| | `apply(a,2,cummax)`         | `cummax(a)`      |                    |
 
 ### Matrix manipulation
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `a[,4:1]` | `fliplr(a)` | Flip left-right |
-| `a[3:1,]` | `flipud(a)` | Flip up-down |
-| | `rot90(a)` | Rotate 90 degrees |
-| `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | Repeat matrix: [ a a a ; a a a ] |
-| `a[lower.tri(a)] <- 0` | `triu(a)` | Triangular, upper |
-| `a[upper.tri(a)] <- 0` | `tril(a)` | Triangular, lower |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Flip left-right | `a[,4:1]` | `fliplr(a)` | Flip left-right |
+| Flip up-down | `a[3:1,]` | `flipud(a)` | Flip up-down |
+| Rotate 90 degrees | | `rot90(a)` | Rotate 90 degrees |
+| Repeat matrix: [ a a a ; a a a ] | `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | Repeat matrix: [ a a a ; a a a ] |
+| Triangular, upper | `a[lower.tri(a)] <- 0` | `triu(a)` | Triangular, upper |
+| Triangular, lower | `a[upper.tri(a)] <- 0` | `tril(a)` | Triangular, lower |
 
 ### Equivalents to “size”
 
-| R         | MATLAB                                       | Description                    |
-|------------------|-----------------------------------------------------|--------------------------------|
-| `dim(a)`         | `size(a)`                                           | Matrix dimensions              |
-| `ncol(a)`        | `size(a,2)` *or* `length(a)` | Number of columns              |
-| `prod(dim(a))`   | `length(a(:))`                                      | Number of elements             |
-|                  | `ndims(a)`                                          | Number of dimensions           |
-| `object.size(a)` |                                                     | Number of bytes used in memory |
+| Description | R         | MATLAB                                       | IGOR                    |
+|---|---|---|---|
+| Matrix dimensions              | `dim(a)`         | `size(a)`                                           | Matrix dimensions              |
+| Number of columns              | `ncol(a)`        | `size(a,2)` *or* `length(a)` | Number of columns              |
+| Number of elements             | `prod(dim(a))`   | `length(a(:))`                                      | Number of elements             |
+| Number of dimensions           |                  | `ndims(a)`                                          | Number of dimensions           |
+| Number of bytes used in memory | `object.size(a)` |                                                     | Number of bytes used in memory |
 
 ### Matrix- and elementwise- multiplication
 
-| R                                                  | MATLAB | Description                                                                     |
-|-----------------------------------------------------------|---------------|---------------------------------------------------------------------------------|
-| `a * b`                                                   | `a .* b`      | Elementwise operations                                                          |
-| `a %*% b`                                                 | `a * b`       | Matrix product (dot product)                                                    |
-| `outer(a,b)` *or* `a %o% b`        |               | Outer product                                                                   |
-| `crossprod(a,b)` *or* `t(a) %*% b` |               | Cross product                                                                   |
-| `kronecker(a,b)`                                          | `kron(a,b)`   | Kronecker product                                                               |
-|                                                           | `a / b`       | Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |
-| `solve(a,b)`                                              | `a \ b`       | Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) |
+| Description | R                                                  | MATLAB | IGOR                                                                     |
+|---|---|---|---|
+| Elementwise operations                                                          | `a * b`                                                   | `a .* b`      | Elementwise operations                                                          |
+| Matrix product (dot product) | `a %*% b`                                                 | `a * b`       | Matrix product (dot product)                                                    |
+| Outer product | `outer(a,b)` *or* `a %o% b`        |               | Outer product                                                                   |
+| Cross product | `crossprod(a,b)` *or* `t(a) %*% b` |               | Cross product                                                                   |
+| Kronecker product | `kronecker(a,b)`                                          | `kron(a,b)`   | Kronecker product                                                               |
+| Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |                                                           | `a / b`       | Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |
+| Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) | `solve(a,b)`                                              | `a \ b`       | Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) |
 
 ### Find; conditional indexing
 
-| R                                     | MATLAB       | Description                      |
-|----------------------------------------------|---------------------|----------------------------------|
-| `which(a != 0)`                              | `find(a)`           | Non-zero elements, indices       |
-| `which(a != 0, arr.ind=T)`                   | `[i j] = find(a)`   | Non-zero elements, array indices |
-| `ij <- which(a != 0, arr.ind=T); v <- a[ij]` | `[i j v] = find(a)` | Vector of non-zero values        |
-| `which(a>5.5)`                               | `find(a>5.5)`       | Condition, indices               |
-| `ij <- which(a>5.5, arr.ind=T); v <- a[ij]`  |                     | Return values                    |
-|                                              | `a .* (a>5.5)`      | Zero out elements above 5.5      |
+| Description | R                                     | MATLAB       | IGOR                      |
+|---|---|---|---|
+| Non-zero elements, indices | `which(a != 0)`                              | `find(a)`           | Non-zero elements, indices       |
+| Non-zero elements, array indices | `which(a != 0, arr.ind=T)`                   | `[i j] = find(a)`   | Non-zero elements, array indices |
+| Vector of non-zero values | `ij <- which(a != 0, arr.ind=T); v <- a[ij]` | `[i j v] = find(a)` | Vector of non-zero values        |
+| Condition, indices               | `which(a>5.5)`                               | `find(a>5.5)`       | Condition, indices               |
+| Return values | `ij <- which(a>5.5, arr.ind=T); v <- a[ij]`  |                     | Return values                    |
+| Zero out elements above 5.5 |                                              | `a .* (a>5.5)`      | Zero out elements above 5.5      |
 
 ### Multi-way arrays
 
-| R | MATLAB                        | Description          |
-|----------|--------------------------------------|----------------------|
-|          | `a = cat(3, [1 2; 1 2],[3 4; 3 4]);` | Define a 3-way array |
-|          | `a(1,:,:)`                           |                      |
+| Description | R | MATLAB                        | IGOR          |
+|---|---|---|---|
+| Define a 3-way array |          | `a = cat(3, [1 2; 1 2],[3 4; 3 4]);` | Define a 3-way array |
+| |          | `a(1,:,:)`                           |                      |
 
 ### File input and output
 
-| R                                    | MATLAB                  | Description                  |
-|---------------------------------------------|--------------------------------|------------------------------|
-| `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
-| `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
-| `f <- read.table(file="data.csv", sep=";")` | `x = dlmread('data.csv', ';')` | Reading fram a CSV file (2d) |
-| `write(f,file="data.txt")`                  | `save -ascii data.txt f`       | Writing to a file (2d)       |
+| Description | R                                    | MATLAB                  | IGOR                  |
+|---|---|---|---|
+| Reading from a file (2d)     | `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
+| Reading from a file (2d)     | `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
+| Reading fram a CSV file (2d) | `f <- read.table(file="data.csv", sep=";")` | `x = dlmread('data.csv', ';')` | Reading fram a CSV file (2d) |
+| Writing to a file (2d)       | `write(f,file="data.txt")`                  | `save -ascii data.txt f`       | Writing to a file (2d)       |
 
 ###Plotting
 ### Basic x-y plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `plot(a, type="l")` | `plot(a)` | 1d line plot |
-| `plot(x[,1],x[,2])` | `plot(x(:,1),x(:,2),'o')` | 2d scatter plot |
-| | `plot(x1,y1, x2,y2)` | Two graphs in one plot |
-| `plot(x1,y1)`<br>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<br>`hold on`<br>`plot(x2,y2)` | Overplotting: Add new plots to current |
-| | `subplot(211)` | subplots |
-| `plot(x,y,type="b",col="red")` | `plot(x,y,'ro-')` | Plotting symbols and color |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| 1d line plot | `plot(a, type="l")` | `plot(a)` | 1d line plot |
+| 2d scatter plot | `plot(x[,1],x[,2])` | `plot(x(:,1),x(:,2),'o')` | 2d scatter plot |
+| Two graphs in one plot | | `plot(x1,y1, x2,y2)` | Two graphs in one plot |
+| Overplotting: Add new plots to current | `plot(x1,y1)`<br>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<br>`hold on`<br>`plot(x2,y2)` | Overplotting: Add new plots to current |
+| subplots | | `subplot(211)` | subplots |
+| Plotting symbols and color | `plot(x,y,type="b",col="red")` | `plot(x,y,'ro-')` | Plotting symbols and color |
 
 ### Axes and titles
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `grid()` | `grid on` | Turn on grid lines |
-| `plot(c(1:10,10:1), asp=1)` | `axis equal` | 1:1 aspect ratio |
-| `plot(x,y, xlim=c(0,10), ylim=c(0,5))` | `axis([ 0 10 0 5 ])` | Set axes manually |
-| `plot(1:10, main="title",`<br>`xlab="x-axis", ylab="y-axis")` | `title('title')`<br>`xlabel('x-axis')`<br>`ylabel('y-axis')` | Axis labels and titles |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Turn on grid lines | `grid()` | `grid on` | Turn on grid lines |
+| 1:1 aspect ratio | `plot(c(1:10,10:1), asp=1)` | `axis equal` | 1:1 aspect ratio |
+| Set axes manually | `plot(x,y, xlim=c(0,10), ylim=c(0,5))` | `axis([ 0 10 0 5 ])` | Set axes manually |
+| Axis labels and titles | `plot(1:10, main="title",`<br>`xlab="x-axis", ylab="y-axis")` | `title('title')`<br>`xlabel('x-axis')`<br>`ylabel('y-axis')` | Axis labels and titles |
 
 ### Log plots
 
-| R              | MATLAB | Description              |
-|-----------------------|---------------|--------------------------|
-| `plot(x,y, log="y")`  | `semilogy(a)` | logarithmic y-axis       |
-| `plot(x,y, log="x")`  | `semilogx(a)` | logarithmic x-axis       |
-| `plot(x,y, log="xy")` | `loglog(a)`   | logarithmic x and y axes |
+| Description | R              | MATLAB | IGOR              |
+|---|---|---|---|
+| logarithmic y-axis       | `plot(x,y, log="y")`  | `semilogy(a)` | logarithmic y-axis       |
+| logarithmic x-axis       | `plot(x,y, log="x")`  | `semilogx(a)` | logarithmic x-axis       |
+| logarithmic x and y axes | `plot(x,y, log="xy")` | `loglog(a)`   | logarithmic x and y axes |
 
 ### Filled plots and bar plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')` | Filled plot |
-| `stem(x[,3])` | | Stem-and-Leaf plot |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Filled plot | `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')` | Filled plot |
+| Stem-and-Leaf plot | `stem(x[,3])` | | Stem-and-Leaf plot |
 
 
 ### Functions
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `f <- function(x) sin(x/3) - cos(x/5)` | `f = inline('sin(x/3) - cos(x/5)')` | Defining functions |
-| `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])` | Plot a function for given range |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Defining functions | `f <- function(x) sin(x/3) - cos(x/5)` | `f = inline('sin(x/3) - cos(x/5)')` | Defining functions |
+| Plot a function for given range | `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])` | Plot a function for given range |
 
 
 ### Polar plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| | `theta = 0:.001:2*pi;`<br>`r = sin(2*theta);` | |
-| | `polar(theta, rho)` | |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| | | `theta = 0:.001:2*pi;`<br>`r = sin(2*theta);` | |
+| | | `polar(theta, rho)` | |
 
 
 ### Histogram plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `hist(rnorm(1000))` | `hist(randn(1000,1))` |
-| `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` |
-| `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` |
-| `plot(apply(a,1,sort),type="l")` | `plot(sort(a))` |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| | `hist(rnorm(1000))` | `hist(randn(1000,1))` |
+| | `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` |
+| | `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` |
+| | `plot(apply(a,1,sort),type="l")` | `plot(sort(a))` |
 
 
 ### 3d data
 
 ### Contour and image plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `contour(z)` | `contour(z)` | Contour plot |
-| `filled.contour(x,y,z,`<br>`nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | Filled contour plot |
-| `image(z, col=gray.colors(256))` | `image(z)`<br>`colormap(gray)` | Plot image data |
-| | `quiver()` | Direction field vectors |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Contour plot | `contour(z)` | `contour(z)` | Contour plot |
+| Filled contour plot | `filled.contour(x,y,z,`<br>`nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | Filled contour plot |
+| Plot image data | `image(z, col=gray.colors(256))` | `image(z)`<br>`colormap(gray)` | Plot image data |
+| Direction field vectors | | `quiver()` | Direction field vectors |
 
 ### Perspective plots of surfaces over the x-y plane
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `f <- function(x,y) x*exp(-x^2-y^2)`<br>`n <- seq(-2,2, length=40)`<br>`z <- outer(n,n,f)` | `n=-2:.1:2;`<br>`[x,y] = meshgrid(n,n);`<br>`z=x.*exp(-x.^2-y.^2);` |
-| `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` ticktype='detailed')` | `mesh(z)` | Mesh plot |
-| `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` *or* `surfl(x,y,z)` | Surface plot |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| | `f <- function(x,y) x*exp(-x^2-y^2)`<br>`n <- seq(-2,2, length=40)`<br>`z <- outer(n,n,f)` | `n=-2:.1:2;`<br>`[x,y] = meshgrid(n,n);`<br>`z=x.*exp(-x.^2-y.^2);` |
+| Mesh plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` ticktype='detailed')` | `mesh(z)` | Mesh plot |
+| Surface plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` *or* `surfl(x,y,z)` | Surface plot |
 
 
 ### Scatter (cloud) plots
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `cloud(z~x*y)` | `plot3(x,y,z,'k+')` | 3d scatter plot |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| 3d scatter plot | `cloud(z~x*y)` | `plot3(x,y,z,'k+')` | 3d scatter plot |
 
 
 ### Save plot to a graphics file
 
-| R | MATLAB | Description |
+| Description | R | MATLAB | IGOR |
 | --- | --- | --- |
-| `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps` | PostScript |
-| `pdf(file='foo.pdf')` |  | PDF |
-| `devSVG(file='foo.svg')` |  | SVG (vector graphics for www) |
-| `png(filename = "Rplot%03d.png"` | `print -dpng foo.png` | PNG (raster graphics) |
+| PostScript | `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps` | PostScript |
+| PDF | `pdf(file='foo.pdf')` |  | PDF |
+| SVG (vector graphics for www) | `devSVG(file='foo.svg')` |  | SVG (vector graphics for www) |
+| PNG (raster graphics) | `png(filename = "Rplot%03d.png"` | `print -dpng foo.png` | PNG (raster graphics) |
 
 
 ### Data analysis
@@ -483,108 +482,108 @@ This is a short guide to translate commands in three IDE softwares. R, MATLAB an
 
 ### Set membership operators
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `a <- c(1,2,2,5,2)`<br>`b <- c(2,3,4)` | `a = [ 1 2 2 5 2 ];`<br>`b = [ 2 3 4 ];` | Create sets |
-| `unique(a)` | `unique(a)` | Set unique |
-| `union(a,b)` | `union(a,b)` | Set union |
-| `intersect(a,b)` | `intersect(a,b)` | Set intersection |
-| `setdiff(a,b)` | `setdiff(a,b)` | Set difference |
-| `setdiff(union(a,b),intersect(a,b))` | `setxor(a,b)` | Set exclusion |
-| `is.element(2,a)` *or* `2 %in% a` | `ismember(2,a)` | True for set member |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Create sets | `a <- c(1,2,2,5,2)`<br>`b <- c(2,3,4)` | `a = [ 1 2 2 5 2 ];`<br>`b = [ 2 3 4 ];` | Create sets |
+| Set unique | `unique(a)` | `unique(a)` | Set unique |
+| Set union | `union(a,b)` | `union(a,b)` | Set union |
+| Set intersection | `intersect(a,b)` | `intersect(a,b)` | Set intersection |
+| Set difference | `setdiff(a,b)` | `setdiff(a,b)` | Set difference |
+| Set exclusion | `setdiff(union(a,b),intersect(a,b))` | `setxor(a,b)` | Set exclusion |
+| True for set member | `is.element(2,a)` *or* `2 %in% a` | `ismember(2,a)` | True for set member |
 
 ### Statistics
 
-| R            | MATLAB | Description             |
-|---------------------|---------------|-------------------------|
-| `apply(a,2,mean)`   | `mean(a)`     | Average                 |
-| `apply(a,2,median)` | `median(a)`   | Median                  |
-| `apply(a,2,sd)`     | `std(a)`      | Standard deviation      |
-| `apply(a,2,var)`    | `var(a)`      | Variance                |
-| `cor(x,y)`          | `corr(x,y)`   | Correlation coefficient |
-| `cov(x,y)`          | `cov(x,y)`    | Covariance              |
+| Description | R            | MATLAB | IGOR             |
+|---|---|---|---|
+| Average                 | `apply(a,2,mean)`   | `mean(a)`     | Average                 |
+| Median                  | `apply(a,2,median)` | `median(a)`   | Median                  |
+| Standard deviation      | `apply(a,2,sd)`     | `std(a)`      | Standard deviation      |
+| Variance                | `apply(a,2,var)`    | `var(a)`      | Variance                |
+| Correlation coefficient | `cor(x,y)`          | `corr(x,y)`   | Correlation coefficient |
+| Covariance              | `cov(x,y)`          | `cov(x,y)`    | Covariance              |
 
 ### Interpolation and regression
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `z <- lm(y~x)`<br>`plot(x,y)`<br>`abline(z)` | `z = polyval(polyfit(x,y,1),x)`<br>`plot(x,y,'o', x,z ,'-')` | Straight line fit |
-| `solve(a,b)` | `a = x\y` | Linear least squares <br>_y_ = _a__x_ + _b_ |
-| | `polyfit(x,y,3)` | Polynomial fit |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Straight line fit | `z <- lm(y~x)`<br>`plot(x,y)`<br>`abline(z)` | `z = polyval(polyfit(x,y,1),x)`<br>`plot(x,y,'o', x,z ,'-')` | Straight line fit |
+| Linear least squares <br>_y_ = _a__x_ + _b_ | `solve(a,b)` | `a = x\y` | Linear least squares <br>_y_ = _a__x_ + _b_ |
+| Polynomial fit | | `polyfit(x,y,3)` | Polynomial fit |
 
 ### Non-linear methods
 
 ### Polynomials, root finding
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | Find zeros of polynomial |
-| | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | Find a zero near _x_ = 1 |
-| | `solve('1/x = x-1')` | Solve symbolic equations |
-| | `polyval([1 2 1 2],1:10)` | Evaluate polynomial |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Find zeros of polynomial | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | Find zeros of polynomial |
+| Find a zero near _x_ = 1 | | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | Find a zero near _x_ = 1 |
+| Solve symbolic equations | | `solve('1/x = x-1')` | Solve symbolic equations |
+| Evaluate polynomial | | `polyval([1 2 1 2],1:10)` | Evaluate polynomial |
  
 ### Differential equations
 
-| R | MATLAB | Description                                             |
-|----------|---------------|---------------------------------------------------------|
-|          | `diff(a)`     | Discrete difference function and approximate derivative |
-|          |               | Solve differential equations                            |
+| Description | R | MATLAB | IGOR                                             |
+|---|---|---|---|
+| Discrete difference function and approximate derivative |          | `diff(a)`     | Discrete difference function and approximate derivative |
+| Solve differential equations                            |          |               | Solve differential equations                            |
 
 ### Fourier analysis
 
-| R               | MATLAB | Description               |
-|------------------------|---------------|---------------------------|
-| `fft(a)`               | `fft(a)`      | Fast fourier transform    |
-| `fft(a, inverse=TRUE)` | `ifft(a)`     | Inverse fourier transform |
+| Description | R               | MATLAB | IGOR               |
+|---|---|---|---|
+| Fast fourier transform    | `fft(a)`               | `fft(a)`      | Fast fourier transform    |
+| Inverse fourier transform | `fft(a, inverse=TRUE)` | `ifft(a)`     | Inverse fourier transform |
 
 ### Symbolic algebra; calculus
 
-| R | MATLAB | Description   |
-|----------|---------------|---------------|
-|          | `factor()`    | Factorization |
+| Description | R | MATLAB | IGOR   |
+|---|---|---|---|
+| Factorization |          | `factor()`    | Factorization |
 
 ### Programming
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `.R` | `.m` | Script file extension |
-| `#` | `%` | Comment symbol (rest of line) |
-| `library(RSvgDevice)` | `% must be in MATLABPATH` | Import library functions |
-| `string <- "a <- 234"`<br>`eval(parse(text=string))` | `string='a=234';`<br>`eval(string)` | Eval |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Script file extension | `.R` | `.m` | Script file extension |
+| Comment symbol (rest of line) | `#` | `%` | Comment symbol (rest of line) |
+| Import library functions | `library(RSvgDevice)` | `% must be in MATLABPATH` | Import library functions |
+| Eval | `string <- "a <- 234"`<br>`eval(parse(text=string))` | `string='a=234';`<br>`eval(string)` | Eval |
 
 ### Loops
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` | for-statement |
-| `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` | Multiline for statements |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| for-statement | `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` | for-statement |
+| Multiline for statements | `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` | Multiline for statements |
 
 ### Conditionals
 
-| R            | MATLAB                 | Description                      |
-|---------------------|-------------------------------|----------------------------------|
-| `if (1>0) a <- 100` | `if 1>0 a=100; end`           | if-statement                     |
-|                     | `if 1>0 a=100; else a=0; end` | if-else-statement                |
-| `ifelse(a>0,a,0)`   |                               | Ternary operator (if?true:false) |
+| Description | R            | MATLAB                 | IGOR                      |
+|---|---|---|---|
+| if-statement                     | `if (1>0) a <- 100` | `if 1>0 a=100; end`           | if-statement                     |
+| if-else-statement                |                     | `if 1>0 a=100; else a=0; end` | if-else-statement                |
+| Ternary operator (if?true:false) | `ifelse(a>0,a,0)`   |                               | Ternary operator (if?true:false) |
 
 ### Debugging
 
-| R      | MATLAB                                       | Description                       |
-|---------------|-----------------------------------------------------|-----------------------------------|
-| `.Last.value` | `ans`                                               | Most recent evaluated expression  |
-| `objects()`   | `whos` *or* `who`            | List variables loaded into memory |
-| `rm(x)`       | `clear x` *or* `clear [all]` | Clear variable *x* from memory    |
-| `print(a)`    | `disp(a)`                                           | Print                             |
+| Description | R      | MATLAB                                       | IGOR                       |
+|---|---|---|---|
+| Most recent evaluated expression  | `.Last.value` | `ans`                                               | Most recent evaluated expression  |
+| List variables loaded into memory | `objects()`   | `whos` *or* `who`            | List variables loaded into memory |
+| Clear variable *x* from memory    | `rm(x)`       | `clear x` *or* `clear [all]` | Clear variable *x* from memory    |
+| Print                             | `print(a)`    | `disp(a)`                                           | Print                             |
 
 ### Working directory and OS
 
-| R | MATLAB | Description |
-| --- | --- | --- |
-| `list.files()` *or* `dir()` | `dir` *or* `ls` | List files in directory |
-| `list.files(pattern="\.r$")` | `what` | List script files in directory |
-| `getwd()` | `pwd` | Displays the current working directory |
-| `setwd('foo')` | `cd foo` | Change working directory |
-| `system("notepad")` | `!notepad` | Invoke a System Command |
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| List files in directory | `list.files()` *or* `dir()` | `dir` *or* `ls` | List files in directory |
+| List script files in directory | `list.files(pattern="\.r$")` | `what` | List script files in directory |
+| Displays the current working directory | `getwd()` | `pwd` | Displays the current working directory |
+| Change working directory | `setwd('foo')` | `cd foo` | Change working directory |
+| Invoke a System Command | `system("notepad")` | `!notepad` | Invoke a System Command |
 
 ---
 
