@@ -1,7 +1,7 @@
 R-MATLAB-IGOR Cheat Sheet
 =========================
 
-Introduction here.
+This is a short guide to translate commands in three IDE softwares. R, MATLAB and IGOR Pro equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details. If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/).
 
 ----
 
@@ -13,7 +13,7 @@ Introduction here.
 
 | R | MATLAB | Description |
 |---|---|---|
-| `help.start()` | `doc`<br>`help -i % browse with Info` | Browse help interactively |
+| `help.start()` | `doc` | Browse help interactively |
 | `help()` | `help help` *or* `doc doc` | Help on using help |
 | `help(plot)` *or* `?plot` | `help plot` | Help for a function |
 | `help` | `help splines` *or* `doc splines` | Help for a toolbox/library package |
@@ -34,11 +34,11 @@ Introduction here.
 
 | R                        | MATLAB                             | Description          |
 |---------------------------------|-------------------------------------------|----------------------|
-| `Rgui`                          | <span class="clone">`octave -q`</span>    | Start session        |
+| `Rgui`                          |     | Start session        |
 | `source('foo.R')`               | `foo(.m)`                                 | Run code from file   |
-| `history()`                     | <span class="clone">`history`</span>      | Command history      |
+| `history()`                     |       | Command history      |
 | `savehistory(file=".Rhistory")` | `diary on [..] diary off`                 | Save command history |
-| `q(save='no')`                  | `exit` <span class="alt">or</span> `quit` | End session          |
+| `q(save='no')`                  | `exit` *or* `quit` | End session          |
 
 ### Operators
 
@@ -77,13 +77,12 @@ Introduction here.
 | --- | --- | --- |
 | `a && b` | `a && b` | Short-circuit logical AND |
 | `a || b` | `a || b` | Short-circuit logical OR |
-| `a & b` | `a & b` <span class="alt">or</span> `and(a,b)` | Element-wise logical AND |
-| `a | b` | `a | b` <span class="alt">or</span> `or(a,b)` | Element-wise logical OR |
+| `a & b` | `a & b` *or* `and(a,b)` | Element-wise logical AND |
+| `a | b` | `a | b` *or* `or(a,b)` | Element-wise logical OR |
 | `xor(a, b)` | `xor(a, b)` | Logical EXCLUSIVE OR |
-| `!a` | `~a` <span class="alt">or</span> `not(a)`
-<span class="clone">`~a` <span class="alt">or</span> `!a`</span> | Logical NOT |
- `any(a)` | True if any element is nonzero |
- `all(a)` | True if all elements are nonzero |
+| `!a` | `~a` *or* `not(a)` | Logical NOT |
+| | `any(a)` | True if any element is nonzero |
+| | `all(a)` | True if all elements are nonzero |
  
 ### root and logarithm
 
@@ -124,7 +123,7 @@ Introduction here.
 |-----------------------------------------------------|---------------|----------------------------|
 | `1i`                                                | `i`           | Imaginary unit             |
 | `z <- 3+4i`                                         | `z = 3+4i`    | A complex number, 3 + 4*i* |
-| `abs(3+4i)` <span class="alt">or</span> `Mod(3+4i)` | `abs(z)`      | Absolute value (modulus)   |
+| `abs(3+4i)` *or* `Mod(3+4i)` | `abs(z)`      | Absolute value (modulus)   |
 | `Re(3+4i)`                                          | `real(z)`     | Real part                  |
 | `Im(3+4i)`                                          | `imag(z)`     | Imaginary part             |
 | `Arg(3+4i)`                                         | `arg(z)`      | Argument                   |
@@ -156,10 +155,10 @@ Introduction here.
 
 | R                                       | MATLAB      | Description                          |
 |------------------------------------------------|--------------------|--------------------------------------|
-| `seq(10)` <span class="alt">or</span> `1:10`   | `1:10`             | 1,2,3, … ,10                         |
+| `seq(10)` *or* `1:10`   | `1:10`             | 1,2,3, … ,10                         |
 | `seq(0,length=10)`                             | `0:9`              | 0.0,1.0,2.0, … ,9.0                  |
 | `seq(1,10,by=3)`                               | `1:3:10`           | 1,4,7,10                             |
-| `seq(10,1)` <span class="alt">or</span> `10:1` | `10:-1:1`          | 10,9,8, … ,1                         |
+| `seq(10,1)` *or* `10:1` | `10:-1:1`          | 10,9,8, … ,1                         |
 | `seq(from=10,to=1,by=-3)`                      | `10:-3:1`          | 10,7,4,1                             |
 | `seq(1,10,length=7)`                           | `linspace(1,10,7)` | Linearly spaced vector of n=7 points |
 | `rev(a)`                                       | `reverse(a)`       | Reverse                              |
@@ -226,9 +225,9 @@ Introduction here.
 
 | R                                                      | MATLAB   | Description             |
 |---------------------------------------------------------------|-----------------|-------------------------|
-| `matrix(0,3,5)` <span class="alt">or</span> `array(0,c(3,5))` | `zeros(3,5)`    | 0 filled array          |
-| `matrix(1,3,5)` <span class="alt">or</span> `array(1,c(3,5))` | `ones(3,5)`     | 1 filled array          |
-| `matrix(9,3,5)` <span class="alt">or</span> `array(9,c(3,5))` | `ones(3,5)*9`   | Any number filled array |
+| `matrix(0,3,5)` *or* `array(0,c(3,5))` | `zeros(3,5)`    | 0 filled array          |
+| `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | 1 filled array          |
+| `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | Any number filled array |
 | `diag(1,3)`                                                   | `eye(3)`        | Identity matrix         |
 | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | Diagonal                |
 |                                                               | `magic(3)`      | Magic squares; Lo Shu   |
@@ -237,12 +236,11 @@ Introduction here.
 
 | R | MATLAB | Description |
 | --- | ---| --- |
-| <tt title="R">matrix(1:6,nrow=3,byrow=T)</tt> | <tt title="matlab">reshape(1:6,3,2)';</tt> | Reshaping (rows first) |
-| <tt title="R">matrix(1:6,nrow=2)</tt>
-<tt title="R">array(1:6,c(2,3))</tt> | <tt title="matlab">reshape(1:6,2,3);</tt> | Reshaping (columns first) |
-| <tt title="R">as.vector(t(a))</tt> | <tt title="matlab">a'(:)</tt> | Flatten to vector (by rows, like comics) |
-| <tt title="R">as.vector(a)</tt> | <tt title="matlab">a(:)</tt> | Flatten to vector (by columns) |
-| <tt title="R">a[row(a) <= col(a)]</tt> | <tt title="matlab">vech(a)</tt> | Flatten upper triangle (by columns) |
+| `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | Reshaping (rows first) |
+| `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | Reshaping (columns first) |
+| `as.vector(t(a))` | `a'(:)` | Flatten to vector (by rows, like comics) |
+| `as.vector(a)` | `a(:)` | Flatten to vector (by columns) |
+| `a[row(a) <= col(a)]` | `vech(a)` | Flatten upper triangle (by columns) |
 
 ### Shared data (slicing)
 
@@ -278,7 +276,7 @@ Introduction here.
 | R           | MATLAB                                    | Description             |
 |--------------------|--------------------------------------------------|-------------------------|
 | `t(a)`             | `a'`                                             | Transpose               |
-|                    | `a.'` <span class="alt">or</span> `transpose(a)` | Non-conjugate transpose |
+|                    | `a.'` *or* `transpose(a)` | Non-conjugate transpose |
 | `det(a)`           | `det(a)`                                         | Determinant             |
 | `solve(a)`         | `inv(a)`                                         | Inverse                 |
 | `ginv(a)`          | `pinv(a)`                                        | Pseudo-inverse          |
@@ -326,9 +324,8 @@ Introduction here.
 | --- | --- | --- |
 | `a[,4:1]` | `fliplr(a)` | Flip left-right |
 | `a[3:1,]` | `flipud(a)` | Flip up-down |
- `rot90(a)` | Rotate 90 degrees |
-| `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)`
-<span class="clone">`kron(ones(2,3),a)`</span> | Repeat matrix: [ a a a ; a a a ] |
+| | `rot90(a)` | Rotate 90 degrees |
+| `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | Repeat matrix: [ a a a ; a a a ] |
 | `a[lower.tri(a)] <- 0` | `triu(a)` | Triangular, upper |
 | `a[upper.tri(a)] <- 0` | `tril(a)` | Triangular, lower |
 
@@ -337,7 +334,7 @@ Introduction here.
 | R         | MATLAB                                       | Description                    |
 |------------------|-----------------------------------------------------|--------------------------------|
 | `dim(a)`         | `size(a)`                                           | Matrix dimensions              |
-| `ncol(a)`        | `size(a,2)` <span class="alt">or</span> `length(a)` | Number of columns              |
+| `ncol(a)`        | `size(a,2)` *or* `length(a)` | Number of columns              |
 | `prod(dim(a))`   | `length(a(:))`                                      | Number of elements             |
 |                  | `ndims(a)`                                          | Number of dimensions           |
 | `object.size(a)` |                                                     | Number of bytes used in memory |
@@ -348,11 +345,11 @@ Introduction here.
 |-----------------------------------------------------------|---------------|---------------------------------------------------------------------------------|
 | `a * b`                                                   | `a .* b`      | Elementwise operations                                                          |
 | `a %*% b`                                                 | `a * b`       | Matrix product (dot product)                                                    |
-| `outer(a,b)` <span class="alt">or</span> `a %o% b`        |               | Outer product                                                                   |
-| `crossprod(a,b)` <span class="alt">or</span> `t(a) %*% b` |               | Cross product                                                                   |
+| `outer(a,b)` *or* `a %o% b`        |               | Outer product                                                                   |
+| `crossprod(a,b)` *or* `t(a) %*% b` |               | Cross product                                                                   |
 | `kronecker(a,b)`                                          | `kron(a,b)`   | Kronecker product                                                               |
 |                                                           | `a / b`       | Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |
-| `solve(a,b)`                                              | `a \ b`       | Left matrix division, *b*<sup>−1</sup> ⋅ *a* \\newline (solve linear equations) |
+| `solve(a,b)`                                              | `a \ b`       | Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) |
 
 ### Find; conditional indexing
 
@@ -389,7 +386,7 @@ Introduction here.
 | `plot(a, type="l")` | `plot(a)` | 1d line plot |
 | `plot(x[,1],x[,2])` | `plot(x(:,1),x(:,2),'o')` | 2d scatter plot |
 | | `plot(x1,y1, x2,y2)` | Two graphs in one plot |
-| `plot(x1,y1)`<p>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<p>`hold on`<p>`plot(x2,y2)` | Overplotting: Add new plots to current |
+| `plot(x1,y1)`<br>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<br>`hold on`<br>`plot(x2,y2)` | Overplotting: Add new plots to current |
 | | `subplot(211)` | subplots |
 | `plot(x,y,type="b",col="red")` | `plot(x,y,'ro-')` | Plotting symbols and color |
 
@@ -398,9 +395,9 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `grid()` | `grid on` | Turn on grid lines |
-| `plot(c(1:10,10:1), asp=1)` | `axis equal`<p>`axis('equal')`<p>`replot` | 1:1 aspect ratio |
+| `plot(c(1:10,10:1), asp=1)` | `axis equal` | 1:1 aspect ratio |
 | `plot(x,y, xlim=c(0,10), ylim=c(0,5))` | `axis([ 0 10 0 5 ])` | Set axes manually |
-| `plot(1:10, main="title",`<p>`xlab="x-axis", ylab="y-axis")` | `title('title')`<p>`xlabel('x-axis')`<p>`ylabel('y-axis')` | Axis labels and titles |
+| `plot(1:10, main="title",`<br>`xlab="x-axis", ylab="y-axis")` | `title('title')`<br>`xlabel('x-axis')`<br>`ylabel('y-axis')` | Axis labels and titles |
 
 ### Log plots
 
@@ -414,7 +411,7 @@ Introduction here.
 
 | R | MATLAB | Description |
 | --- | --- | --- |
-| `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')`<br>`% fill has a bug?` | Filled plot |
+| `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')` | Filled plot |
 | `stem(x[,3])` | | Stem-and-Leaf plot |
 
 
@@ -423,7 +420,7 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `f <- function(x) sin(x/3) - cos(x/5)` | `f = inline('sin(x/3) - cos(x/5)')` | Defining functions |
-| `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])`<br>`% no ezplot` | Plot a function for given range |
+| `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])` | Plot a function for given range |
 
 
 ### Polar plots
@@ -451,8 +448,7 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `contour(z)` | `contour(z)` | Contour plot |
-| `filled.contour(x,y,z,`
-` nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | Filled contour plot |
+| `filled.contour(x,y,z,`<br>`nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | Filled contour plot |
 | `image(z, col=gray.colors(256))` | `image(z)`<br>`colormap(gray)` | Plot image data |
 | | `quiver()` | Direction field vectors |
 
@@ -462,7 +458,7 @@ Introduction here.
 | --- | --- | --- |
 | `f <- function(x,y) x*exp(-x^2-y^2)`<br>`n <- seq(-2,2, length=40)`<br>`z <- outer(n,n,f)` | `n=-2:.1:2;`<br>`[x,y] = meshgrid(n,n);`<br>`z=x.*exp(-x.^2-y.^2);` |
 | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` ticktype='detailed')` | `mesh(z)` | Mesh plot |
-| `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` <span class="alt">or</span> `surfl(x,y,z)`<br>`% no surfl()` | Surface plot |
+| `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` *or* `surfl(x,y,z)` | Surface plot |
 
 
 ### Scatter (cloud) plots
@@ -476,7 +472,7 @@ Introduction here.
 
 | R | MATLAB | Description |
 | --- | --- | --- |
-| `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps`<br>`gset output "foo.eps"`<br>`gset terminal postscript eps`<br>`plot(1:10)` | PostScript |
+| `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps` | PostScript |
 | `pdf(file='foo.pdf')` |  | PDF |
 | `devSVG(file='foo.svg')` |  | SVG (vector graphics for www) |
 | `png(filename = "Rplot%03d.png"` | `print -dpng foo.png` | PNG (raster graphics) |
@@ -489,15 +485,13 @@ Introduction here.
 
 | R | MATLAB | Description |
 | --- | --- | --- |
-| `a <- c(1,2,2,5,2)`
-`b <- c(2,3,4)` | `a = [ 1 2 2 5 2 ];`
-`b = [ 2 3 4 ];` | Create sets |
+| `a <- c(1,2,2,5,2)`<br>`b <- c(2,3,4)` | `a = [ 1 2 2 5 2 ];`<br>`b = [ 2 3 4 ];` | Create sets |
 | `unique(a)` | `unique(a)` | Set unique |
 | `union(a,b)` | `union(a,b)` | Set union |
 | `intersect(a,b)` | `intersect(a,b)` | Set intersection |
 | `setdiff(a,b)` | `setdiff(a,b)` | Set difference |
 | `setdiff(union(a,b),intersect(a,b))` | `setxor(a,b)` | Set exclusion |
-| `is.element(2,a)` <span class="alt">or</span> `2 %in% a` | `ismember(2,a)` | True for set member |
+| `is.element(2,a)` *or* `2 %in% a` | `ismember(2,a)` | True for set member |
 
 ### Statistics
 
@@ -515,7 +509,7 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `z <- lm(y~x)`<br>`plot(x,y)`<br>`abline(z)` | `z = polyval(polyfit(x,y,1),x)`<br>`plot(x,y,'o', x,z ,'-')` | Straight line fit |
-| `solve(a,b)` | `a = x\y` | Linear least squares <br>_y_ = _a__x_ + _b_</span> |
+| `solve(a,b)` | `a = x\y` | Linear least squares <br>_y_ = _a__x_ + _b_ |
 | | `polyfit(x,y,3)` | Polynomial fit |
 
 ### Non-linear methods
@@ -525,7 +519,7 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | Find zeros of polynomial |
-| | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | Find a zero near <span class="math inline">_x_ = 1</span> |
+| | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | Find a zero near _x_ = 1 |
 | | `solve('1/x = x-1')` | Solve symbolic equations |
 | | `polyval([1 2 1 2],1:10)` | Evaluate polynomial |
  
@@ -554,13 +548,9 @@ Introduction here.
 | R | MATLAB | Description |
 | --- | --- | --- |
 | `.R` | `.m` | Script file extension |
-| `#` | `%`
-<span class="clone">`%` <span class="alt">or</span> `#`</span> | Comment symbol (rest of line) |
-| `library(RSvgDevice)` | `% must be in MATLABPATH`
-<span class="clone">`% must be in LOADPATH`</span> | Import library functions |
-| `string <- "a <- 234"`
-`eval(parse(text=string))` | `string='a=234';`
-`eval(string)` | Eval |
+| `#` | `%` | Comment symbol (rest of line) |
+| `library(RSvgDevice)` | `% must be in MATLABPATH` | Import library functions |
+| `string <- "a <- 234"`<br>`eval(parse(text=string))` | `string='a=234';`<br>`eval(string)` | Eval |
 
 ### Loops
 
@@ -582,20 +572,19 @@ Introduction here.
 | R      | MATLAB                                       | Description                       |
 |---------------|-----------------------------------------------------|-----------------------------------|
 | `.Last.value` | `ans`                                               | Most recent evaluated expression  |
-| `objects()`   | `whos` <span class="alt">or</span> `who`            | List variables loaded into memory |
-| `rm(x)`       | `clear x` <span class="alt">or</span> `clear [all]` | Clear variable *x* from memory    |
+| `objects()`   | `whos` *or* `who`            | List variables loaded into memory |
+| `rm(x)`       | `clear x` *or* `clear [all]` | Clear variable *x* from memory    |
 | `print(a)`    | `disp(a)`                                           | Print                             |
 
 ### Working directory and OS
 
 | R | MATLAB | Description |
 | --- | --- | --- |
-| `list.files()` <span class="alt">or</span> `dir()` | `dir` <span class="alt">or</span> `ls` | List files in directory |
+| `list.files()` *or* `dir()` | `dir` *or* `ls` | List files in directory |
 | `list.files(pattern="\.r$")` | `what` | List script files in directory |
 | `getwd()` | `pwd` | Displays the current working directory |
 | `setwd('foo')` | `cd foo` | Change working directory |
-| `system("notepad")` | `!notepad`
-| | `system("notepad")` | Invoke a System Command |
+| `system("notepad")` | `!notepad` | Invoke a System Command |
 
 ---
 
