@@ -177,19 +177,19 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R         | MATLAB | IGOR         |
 |---|---|---|---|
-| 1 2 3, 1 2 3        | `rep(a,times=2)` | `[a a]`       | 1 2 3, 1 2 3        |
-| 1 1 1, 2 2 2, 3 3 3 | `rep(a,each=3)`  |               | 1 1 1, 2 2 2, 3 3 3 |
-| 1, 2 2, 3 3 3       | `rep(a,a)`       |               | 1, 2 2, 3 3 3       |
+| 1 2 3, 1 2 3        | `rep(a,times=2)` | `[a a]`       | `Concatenate/NP {a,a}, b`       |
+| 1 1 1, 2 2 2, 3 3 3 | `rep(a,each=3)`  |               | `Concatenate {a,a,a},b`<br>`MatrixTranspose b`<br>`Redimension/N=9 b` |
+| 1, 2 2, 3 3 3       | `rep(a,a)`       |               |        |
 
 ### Miss those elements out
 
 | Description | R          | MATLAB  | IGOR            |
 |---|---|---|---|
-| miss the first element | `a[-1]`           | `a(2:end)`     | miss the first element |
-| miss the tenth element | `a[-10]`          | `a([1:9])`     | miss the tenth element |
-| miss 1,4,7, …          | `a[-seq(1,50,3)]` |                | miss 1,4,7, …          |
-| last element           |                   | `a(end)`       | last element           |
-| last two elements      |                   | `a(end-1:end)` | last two elements      |
+| miss the first element | `a[-1]`           | `a(2:end)`     | `a[1,*]` |
+| miss the tenth element | `a[-10]`          | `a([1:9])`     | `a[0,numpnts(a)-2]` |
+| miss 1,4,7, …          | `a[-seq(1,50,3)]` |                | `a[0,*;3]`          |
+| last element           |                   | `a(end)`       | `a[numpnts(a)-1]`           |
+| last two elements      |                   | `a(end-1:end)` | `a[numpnts(a)-2,*]`      |
 
 ### Maximum and minimum
 
@@ -197,7 +197,7 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 |---|---|---|---|
 | pairwise max                     | `pmax(a,b)`                       | `max(a,b)`       | pairwise max                     |
 | max of all values in two vectors | `max(a,b)`                        | `max([a b])`     | max of all values in two vectors |
-| | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` |                                  |
+| | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` | `WaveStats a` v = V_max, i = V_maxRowLoc                               |
 
 ### Vector multiplication
 
