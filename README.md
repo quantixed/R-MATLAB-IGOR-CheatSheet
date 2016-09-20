@@ -144,7 +144,7 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 | Uniform distribution             | `runif(10)`               | `rand(1,10)`     | `Make/N=10 wave0 = 0.5 + enoise(0.5)`             |
 | Uniform: Numbers between 2 and 7 | `runif(10, min=2, max=7)` | `2+5*rand(1,10)` | `Make/N=10 wave0 = 2+ + abs(enoise(5))` |
 | Uniform: 6,6 array               | `matrix(runif(36),6)`     | `rand(6)`        | `Make/N=(6,6) wave0 = enoise(1)`               |
-| Normal distribution              | `rnorm(10)`               | `randn(1,10)`    | `gnoise(a)`<br>where a = standard deviation              |
+| Normal distribution              | `rnorm(100,0,1)`               | `randn(100,1)`    | `Make/N=100 wave0 = gnoise(1)`              |
 
 ### Vectors
 
@@ -195,82 +195,82 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R                          | MATLAB    | IGOR                      |
 |---|---|---|---|
-| pairwise max                     | `pmax(a,b)`                       | `max(a,b)`       | pairwise max                     |
-| max of all values in two vectors | `max(a,b)`                        | `max([a b])`     | max of all values in two vectors |
+| pairwise max                     | `pmax(a,b)`                       | `max(a,b)`       | `max(a,b)`                     |
+| max of all values in two vectors | `max(a,b)`                        | `max([a b])`     | `max(wavemax(a),wavemax(b))` |
 | | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` | `WaveStats a` v = V_max, i = V_maxRowLoc                               |
 
 ### Vector multiplication
 
 | Description | R | MATLAB | IGOR                   |
 |---|---|---|---|
-| Multiply two vectors          | `a*a`    | `a.*a`        | Multiply two vectors          |
-| Vector dot product, *u* ⋅ *v* |          | `dot(u,v)`    | Vector dot product, *u* ⋅ *v* |
+| Multiply two vectors          | `a*a`    | `a.*a`        | `MatrixOp b = a * a`          |
+| Vector dot product, *u* ⋅ *v* |          | `dot(u,v)`    | `MatrixOp b = u . v` |
 
 ### Matrices
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Define a matrix | `rbind(c(2,3),c(4,5))`<br>`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | Define a matrix |
+| Define a matrix | `rbind(c(2,3),c(4,5))`<br>`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | `Make/N=(2,2) a = {2,4},{3,5}` |
 
 ### Concatenation (matrices); rbind and cbind
 
 | Description | R         | MATLAB  | IGOR                          |
 |---|---|---|---|
-| Bind rows                            | `rbind(a,b)`     | `[a ; b]`      | Bind rows                            |
-| Bind columns                         | `cbind(a,b)`     | `[a , b]`      | Bind columns                         |
-| Concatenate matrices into one vector |                  | `[a(:), b(:)]` | Concatenate matrices into one vector |
-| Bind rows (from vectors)             | `rbind(1:4,1:4)` | `[1:4 ; 1:4]`  | Bind rows (from vectors)             |
-| Bind columns (from vectors)          | `cbind(1:4,1:4)` | `[1:4 ; 1:4]'` | Bind columns (from vectors)          |
+| Bind rows                            | `rbind(a,b)`     | `[a ; b]`      | `Concatenate/NP=1 {a,b}, c`                            |
+| Bind columns                         | `cbind(a,b)`     | `[a , b]`      | `Concatenate {a,b}, c`                         |
+| Concatenate matrices into one vector |                  | `[a(:), b(:)]` | *?* |
+| Bind rows (from vectors)             | `rbind(1:4,1:4)` | `[1:4 ; 1:4]`  | `Make/N=(2,4) a = 1 + q`             |
+| Bind columns (from vectors)          | `cbind(1:4,1:4)` | `[1:4 ; 1:4]'` | `Make/N=(4,2) a = 1 + p`          |
 
 ### Array creation
 
 | Description | R                                                      | MATLAB   | IGOR             |
 |---|---|---|---|
-| 0 filled array          | `matrix(0,3,5)` *or* `array(0,c(3,5))` | `zeros(3,5)`    | 0 filled array          |
-| 1 filled array          | `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | 1 filled array          |
-| Any number filled array | `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | Any number filled array |
+| 0 filled array          | `matrix(0,3,5)` *or* `array(0,c(3,5))` | `zeros(3,5)`    | `Make/N=(3,5) a = 0`          |
+| 1 filled array          | `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | `Make/N=(3,5) a = 1`          |
+| Any number filled array | `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | `Make/N=(3,5) a = 9` |
 | Identity matrix         | `diag(1,3)`                                                   | `eye(3)`        | Identity matrix         |
-| Diagonal                | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | Diagonal                |
-| Magic squares; Lo Shu   |                                                               | `magic(3)`      | Magic squares; Lo Shu   |
+| Diagonal                | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | *?*                |
+| Magic squares; Lo Shu   |                                                               | `magic(3)`      | *?*   |
 
 ### Reshape and flatten matrices
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | Reshaping (rows first) |
-| Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | Reshaping (columns first) |
-| Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | Flatten to vector (by rows, like comics) |
-| Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | Flatten to vector (by columns) |
-| Flatten upper triangle (by columns) | `a[row(a) <= col(a)]` | `vech(a)` | Flatten upper triangle (by columns) |
+| Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | *?* |
+| Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | *?* |
+| Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | *?* |
+| Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | *?* |
+| Flatten upper triangle (by columns) | `a[row(a) <= col(a)]` | `vech(a)` | *?* |
 
 ### Shared data (slicing)
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Copy of a   | `b = a`  | `b = a`       | Copy of a   |
+| Copy of a   | `b = a`  | `b = a`       | `Duplicate a, b`   |
 
 ### Indexing and accessing elements (Python: slicing)
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Input is a 3,4 array | `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),`<br>`c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | Input is a 3,4 array |
-| Element 2,3 (row,col) | `a[2,3]` | `a(2,3)` | Element 2,3 (row,col) |
-| First row | `a[1,]` | `a(1,:)` | First row |
-| First column | `a[,1]` | `a(:,1)` | First column |
-| Array as indices | | `a([1 3],[1 4]);` | Array as indices |
-| All, except first row | `a[-1,]` | `a(2:end,:)` | All, except first row |
-| Last two rows | | `a(end-1:end,:)` | Last two rows |
-| Strides: Every other row | | `a(1:2:end,:)` | Strides: Every other row |
-| All, except row,column (2,3) | `a[-2,-3]` | | All, except row,column (2,3) |
-| Remove one column | `a[,-2]` | `a(:,[1 3 4])` | Remove one column |
+| Input is a 3,4 array | `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),`<br>`c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | `Make/N=(4,3) a = {11,12,13,14},{21,22,23,24},{31,32,33,34}`<br>`MatrixTranspose a` |
+| Element 2,3 (row,col) | `a[2,3]` | `a(2,3)` | `a[1][2]` |
+| First row | `a[1,]` | `a(1,:)` | `a[0][]` |
+| First column | `a[,1]` | `a(:,1)` | `a[][0]` |
+| Array as indices | | `a([1 3],[1 4]);` | *?* |
+| All, except first row | `a[-1,]` | `a(2:end,:)` | `a[1,*][]` |
+| Last two rows | | `a(end-1:end,:)` | `a[dimsize(a,0)-2,][]` |
+| Strides: Every other row | | `a(1:2:end,:)` | `a[0,*;2][]` |
+| All, except row,column (2,3) | `a[-2,-3]` | | *?* |
+| Remove one column | `a[,-2]` | `a(:,[1 3 4])` | `DeletePoints/M=1 0,1,a` |
 
 ### Assignment
 
 | Description | R               | MATLAB          | IGOR                            |
 |---|---|---|---|
-| | `a[,1] <- 99`          | `a(:,1) = 99`          |                                        |
-| | `a[,1] <- c(99,98,97)` | `a(:,1) = [99 98 97]'` |                                        |
-| Clipping: Replace all elements over 90 | `a[a>90] <- 90`        | `a(a>90) = 90;`        | Clipping: Replace all elements over 90 |
+| | `a[,1] <- 99`          | `a(:,1) = 99`          | `a[][1] = 99`                      |
+| | `a[,1] <- c(99,98,97)` | `a(:,1) = [99 98 97]'` | `a[][1] = {99,98,97}` *or* `a[][1] = 99 - p`                         |
+| Clipping: Replace all elements over 90 | `a[a>90] <- 90`        | `a(a>90) = 90;`        | `a = a[p][q] > 90 ? 90 : a[p][q]` |
 
 ### Transpose and inverse
 
