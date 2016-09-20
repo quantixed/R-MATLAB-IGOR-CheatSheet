@@ -276,26 +276,26 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R           | MATLAB                                    | IGOR             |
 |---|---|---|---|
-| Transpose               | `t(a)`             | `a'`                                             | Transpose               |
-| Non-conjugate transpose |                    | `a.'` *or* `transpose(a)` | Non-conjugate transpose |
-| Determinant             | `det(a)`           | `det(a)`                                         | Determinant             |
-| Inverse                 | `solve(a)`         | `inv(a)`                                         | Inverse                 |
-| Pseudo-inverse          | `ginv(a)`          | `pinv(a)`                                        | Pseudo-inverse          |
-| Norms                   |                    | `norm(a)`                                        | Norms                   |
-| Eigenvalues             | `eigen(a)$values`  | `eig(a)`                                         | Eigenvalues             |
-| Singular values         | `svd(a)$d`         | `svd(a)`                                         | Singular values         |
-| Cholesky factorization  |                    | `chol(a)`                                        | Cholesky factorization  |
-| Eigenvectors            | `eigen(a)$vectors` | `[v,l] = eig(a)`                                 | Eigenvectors            |
-| Rank                    | `rank(a)`          | `rank(a)`                                        | Rank                    |
+| Transpose               | `t(a)`             | `a'`                                             | `MatrixTranspose a`               |
+| Non-conjugate transpose |                    | `a.'` *or* `transpose(a)` | `MatrixTranspose/H a` |
+| Determinant             | `det(a)`           | `det(a)`                                         | `MatrixDet a` *or* `MatrixOp b = det(a)`            |
+| Inverse                 | `solve(a)`         | `inv(a)`                                         | `MatrixInverse a`                 |
+| Pseudo-inverse          | `ginv(a)`          | `pinv(a)`                                        | `MatrixInverse/P a`          |
+| Norms                   |                    | `norm(a)`                                        | `norm(a)`                   |
+| Eigenvalues             | `eigen(a)$values`  | `eig(a)`                                         | `MatrixEigenV a`             |
+| Singular values         | `svd(a)$d`         | `svd(a)`                                         | `MatrixSVD a`         |
+| Cholesky factorization  |                    | `chol(a)`                                        | `MatrixOp chol(a)`  |
+| Eigenvectors            | `eigen(a)$vectors` | `[v,l] = eig(a)`                                 | `MatrixEigenV a`            |
+| Rank                    | `rank(a)`          | `rank(a)`                                        | `MatrixRank(a)`                    |
 
 ### Sum
 
 | Description | R            | MATLAB | IGOR              |
 |---|---|---|---|
-| Sum of each column       | `apply(a,2,sum)`    | `sum(a)`      | Sum of each column       |
-| Sum of each row          | `apply(a,1,sum)`    | `sum(a')`     | Sum of each row          |
-| Sum of all elements      | `sum(a)`            | `sum(sum(a))` | Sum of all elements      |
-| Cumulative sum (columns) | `apply(a,2,cumsum)` | `cumsum(a)`   | Cumulative sum (columns) |
+| Sum of each column       | `apply(a,2,sum)`    | `sum(a)`      | `MatrixOp b = sumCols(a)`       |
+| Sum of each row          | `apply(a,1,sum)`    | `sum(a')`     | `MatrixOp b = sumRows(a)`          |
+| Sum of all elements      | `sum(a)`            | `sum(sum(a))` | `Sum(a)`      |
+| Cumulative sum (columns) | `apply(a,2,cumsum)` | `cumsum(a)`   | `MatrixOp b = sumCols(a)`<br>`Integrate/DIM=1 b` |
 
 ### Sorting
 
