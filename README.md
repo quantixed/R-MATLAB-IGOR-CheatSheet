@@ -123,55 +123,55 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R                       | MATLAB | IGOR                |
 |---|---|---|---|
-| Imaginary unit             | `1i`                | `i`           | Imaginary unit             |
-| A complex number, 3 + 4*i* | `z <- 3+4i`         | `z = 3+4i`    | A complex number, 3 + 4*i* |
-| Absolute value (modulus)   | `abs(3+4i)` *or* `Mod(3+4i)` | `abs(z)`      | Absolute value (modulus)   |
-| Real part                  | `Re(3+4i)`          | `real(z)`     | Real part                  |
-| Imaginary part             | `Im(3+4i)`          | `imag(z)`     | Imaginary part             |
-| Argument                   | `Arg(3+4i)`         | `arg(z)`      | Argument                   |
-| Complex conjugate          | `Conj(3+4i)`        | `conj(z)`     | Complex conjugate          |
+| Imaginary unit             | `1i`                | `i`           | `i`             |
+| A complex number, 3 + 4*i* | `z <- 3+4i`         | `z = 3+4i`    | `variable/c z = cmplx(3,4)` |
+| Absolute value (modulus)   | `abs(3+4i)` *or* `Mod(3+4i)` | `abs(z)`      | `sqrt(magSqr(z)`   |
+| Real part                  | `Re(3+4i)`          | `real(z)`     | `real(z)`                 |
+| Imaginary part             | `Im(3+4i)`          | `imag(z)`     | `imag(z)`             |
+| Argument                   | `Arg(3+4i)`         | `arg(z)`      |                    |
+| Complex conjugate          | `Conj(3+4i)`        | `conj(z)`     | `conj(z)`          |
 
 ### Trigonometry
 
 | Description | R     | MATLAB | IGOR                 |
 |---|---|---|---|
-| Arctangent, arctan(*b*/*a*) | `atan2(b,a)` | `atan(a,b)`   | Arctangent, arctan(*b*/*a*) |
+| Arctangent, arctan(*b*/*a*) | `atan2(b,a)` | `atan(a,b)`   | `atan2(b,a)` |
 
 ### Generate random numbers
 
 | Description | R                  | MATLAB    | IGOR                      |
 |---|---|---|---|
-| Uniform distribution             | `runif(10)`               | `rand(1,10)`     | Uniform distribution             |
-| Uniform: Numbers between 2 and 7 | `runif(10, min=2, max=7)` | `2+5*rand(1,10)` | Uniform: Numbers between 2 and 7 |
-| Uniform: 6,6 array               | `matrix(runif(36),6)`     | `rand(6)`        | Uniform: 6,6 array               |
-| Normal distribution              | `rnorm(10)`               | `randn(1,10)`    | Normal distribution              |
+| Uniform distribution             | `runif(10)`               | `rand(1,10)`     | `Make/N=10 wave0 = 0.5 + enoise(0.5)`             |
+| Uniform: Numbers between 2 and 7 | `runif(10, min=2, max=7)` | `2+5*rand(1,10)` | `Make/N=10 wave0 = 2+ + abs(enoise(5))` |
+| Uniform: 6,6 array               | `matrix(runif(36),6)`     | `rand(6)`        | `Make/N=(6,6) wave0 = enoise(1)`               |
+| Normal distribution              | `rnorm(10)`               | `randn(1,10)`    | `gnoise(a)`<br>where a = standard deviation              |
 
 ### Vectors
 
 | Description | R                 | MATLAB       | IGOR                   |
 |---|---|---|---|
-| Row vector, 1 × *n*-matrix    | `a <- c(2,3,4,5)`        | `a=[2 3 4 5];`      | Row vector, 1 × *n*-matrix    |
-| Column vector, *m* × 1-matrix | `adash <- t(c(2,3,4,5))` | `adash=[2 3 4 5]';` | Column vector, *m* × 1-matrix |
+| Row vector, 1 × *n*-matrix    | `a <- c(2,3,4,5)`        | `a=[2 3 4 5];`      | `Make/N=4 a = {2, 3, 4, 5}`    |
+| Column vector, *m* × 1-matrix | `adash <- t(c(2,3,4,5))` | `adash=[2 3 4 5]';` | `Make/N=(1,4) adash = {2, 3, 4, 5}` |
 
 ### Sequences
 
 | Description | R                                       | MATLAB      | IGOR                          |
 |---|---|---|---|
-| 1,2,3, … ,10                         | `seq(10)` *or* `1:10`   | `1:10`             | 1,2,3, … ,10                         |
-| 0.0,1.0,2.0, … ,9.0                  | `seq(0,length=10)`                             | `0:9`              | 0.0,1.0,2.0, … ,9.0                  |
-| 1,4,7,10                             | `seq(1,10,by=3)`                               | `1:3:10`           | 1,4,7,10                             |
-| 10,9,8, … ,1                         | `seq(10,1)` *or* `10:1` | `10:-1:1`          | 10,9,8, … ,1                         |
-| 10,7,4,1                             | `seq(from=10,to=1,by=-3)`                      | `10:-3:1`          | 10,7,4,1                             |
-| Linearly spaced vector of n=7 points | `seq(1,10,length=7)`                           | `linspace(1,10,7)` | Linearly spaced vector of n=7 points |
-| Reverse                              | `rev(a)`                                       | `reverse(a)`       | Reverse                              |
-| Set all values to same scalar value  |                                                | `a(:) = 3`         | Set all values to same scalar value  |
+| 1,2,3, … ,10                         | `seq(10)` *or* `1:10`   | `1:10`             | `make/N=10 a = p+1`                         |
+| 0.0,1.0,2.0, … ,9.0                  | `seq(0,length=10)`                             | `0:9`              | `Make/N=10 a = p`                  |
+| 1,4,7,10                             | `seq(1,10,by=3)`                               | `1:3:10`           | `Make/N=4 a = p*3+1`                             |
+| 10,9,8, … ,1                         | `seq(10,1)` *or* `10:1` | `10:-1:1`          | `make/N=10 a = 10-p`                         |
+| 10,7,4,1                             | `seq(from=10,to=1,by=-3)`                      | `10:-3:1`          | `Make/N=4 a = 10-(p*3)`                             |
+| Linearly spaced vector of n=7 points | `seq(1,10,length=7)`                           | `linspace(1,10,7)` | `Make/N=2 a = {1,10}`<br>`Interpolate2/T=1/N=7/Y=a_L a` |
+| Reverse                              | `rev(a)`                                       | `reverse(a)`       | `Reverse a`                             |
+| Set all values to same scalar value  |                                                | `a(:) = 3`         | `a = 3`  |
 
 ### Concatenation (vectors)
 
 | Description | R   | MATLAB | IGOR             |
 |---|---|---|---|
-| Concatenate two vectors | `c(a,a)`   | `[a a]`       | Concatenate two vectors |
-|                         | `c(1:4,a)` | `[1:4 a]`     |                         |
+| Concatenate two vectors | `c(a,a)`   | `[a a]`       | `Concatenate {a,a}, b` |
+|                         | `c(1:4,a)` | `[1:4 a]`     | `Make/N=4 b = 1 + p`<br>`Concatenate {b,a}, c`                       |
 
 ### Repeating
 
