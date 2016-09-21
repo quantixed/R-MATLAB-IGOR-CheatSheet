@@ -314,20 +314,20 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R                    | MATLAB    | IGOR        |
 |---|---|---|---|
-| max in each column | `apply(a,2,max)`            | `max(a)`         | max in each column |
-| max in each row    | `apply(a,1,max)`            | `max(a')`        | max in each row    |
-| max in array       | `max(a)`                    | `max(max(a))`    | max in array       |
+| max in each column | `apply(a,2,max)`            | `max(a)`         | `MatrixOp b=maxCols(a)` |
+| max in each row    | `apply(a,1,max)`            | `max(a')`        | `MatrixOp b=a^t`<br>`MatrixOp c=maxCols(b)`    |
+| max in array       | `max(a)`                    | `max(max(a))`    | `MatrixOp b=maxVal(a)`<br>*or* `WaveStats a`       |
 | return indices, i  | `i <- apply(a,1,which.max)` | `[v i] = max(a)` | return indices, i  |
-| pairwise max       | `pmax(b,c)`                 | `max(b,c)`       | pairwise max       |
-| | `apply(a,2,cummax)`         | `cummax(a)`      |                    |
+| pairwise max       | `pmax(b,c)`                 | `max(b,c)`       | `max(b,c)`       |
+| | `apply(a,2,cummax)`         | `cummax(a)`      | `max(sum(b),sum(c))`                   |
 
 ### Matrix manipulation
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Flip left-right | `a[,4:1]` | `fliplr(a)` | Flip left-right |
-| Flip up-down | `a[3:1,]` | `flipud(a)` | Flip up-down |
-| Rotate 90 degrees | | `rot90(a)` | Rotate 90 degrees |
+| Flip left-right | `a[,4:1]` | `fliplr(a)` | `MatrixOp b=reverseRows(a)` |
+| Flip up-down | `a[3:1,]` | `flipud(a)` | `MatrixOp b=reverseCols(a)` |
+| Rotate 90 degrees | | `rot90(a)` | `MatrixOp b=a^t` |
 | Repeat matrix: [ a a a ; a a a ] | `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | Repeat matrix: [ a a a ; a a a ] |
 | Triangular, upper | `a[lower.tri(a)] <- 0` | `triu(a)` | Triangular, upper |
 | Triangular, lower | `a[upper.tri(a)] <- 0` | `tril(a)` | Triangular, lower |
