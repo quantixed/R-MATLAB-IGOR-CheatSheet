@@ -301,7 +301,7 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R             | MATLAB                   | IGOR              |
 |---|---|---|---|
-| Example data             |                      | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | Example data             |
+| `Make/N=(3,3) a = {4,2,1},{3,8,4},{2,6,7}`             |                      | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | Example data             |
 | Flat and sorted          | `t(sort(a))`         | `sort(a(:))`                    | Flat and sorted          |
 | Sort each column         | `apply(a,2,sort)`    | `sort(a)`                       | Sort each column         |
 | Sort each row            | `t(apply(a,1,sort))` | `sort(a')'`                     | Sort each row            |
@@ -498,12 +498,12 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R            | MATLAB | IGOR             |
 |---|---|---|---|
-| Average                 | `apply(a,2,mean)`   | `mean(a)`     | Average                 |
-| Median                  | `apply(a,2,median)` | `median(a)`   | Median                  |
-| Standard deviation      | `apply(a,2,sd)`     | `std(a)`      | Standard deviation      |
-| Variance                | `apply(a,2,var)`    | `var(a)`      | Variance                |
-| Correlation coefficient | `cor(x,y)`          | `corr(x,y)`   | Correlation coefficient |
-| Covariance              | `cov(x,y)`          | `cov(x,y)`    | Covariance              |
+| Average                 | `apply(a,2,mean)`   | `mean(a)`     | `mean(a)`<br>Note:`WaveStats a` *or* `ImageStats a` gives many statistics                 |
+| Median                  | `apply(a,2,median)` | `median(a)`   | `median(a)` *or* `statsmedian(a)`                  |
+| Standard deviation      | `apply(a,2,sd)`     | `std(a)`      | `WaveStats a`      |
+| Variance                | `apply(a,2,var)`    | `var(a)`      | `Variance(a)`                |
+| Correlation coefficient | `cor(x,y)`          | `corr(x,y)`   | `StatsCorrelation x,y` *or* `Correlate x,y` |
+| Covariance              | `cov(x,y)`          | `cov(x,y)`    | `MatrixCorr/COV x,y`              |
 
 ### Interpolation and regression
 
@@ -581,11 +581,11 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| List files in directory | `list.files()` *or* `dir()` | `dir` *or* `ls` | List files in directory |
-| List script files in directory | `list.files(pattern="\.r$")` | `what` | List script files in directory |
-| Displays the current working directory | `getwd()` | `pwd` | Displays the current working directory |
-| Change working directory | `setwd('foo')` | `cd foo` | Change working directory |
-| Invoke a System Command | `system("notepad")` | `!notepad` | Invoke a System Command |
+| List files in directory | `list.files()` *or* `dir()` | `dir` *or* `ls` | Data > Data Browser |
+| List script files in directory | `list.files(pattern="\.r$")` | `what` | Window > Procedure Window |
+| Displays the current working directory | `getwd()` | `pwd` | `GetDataFolder(0)` |
+| Change working directory | `setwd('foo')` | `cd foo` | `SetDataFolder $expDataFolderName` |
+| Invoke a System Command | `system("notepad")` | `!notepad` | `Execute "command"` |
 
 ---
 
