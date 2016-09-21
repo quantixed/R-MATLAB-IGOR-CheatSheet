@@ -199,7 +199,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 |---|---|---|---|
 | pairwise max                     | `pmax(a,b)`                       | `max(a,b)`       | `max(a,b)`                     |
 | max of all values in two vectors | `max(a,b)`                        | `max([a b])`     | `max(wavemax(a),wavemax(b))` |
-| | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` | `WaveStats a` v = V_max, i = V_maxRowLoc                               |
+| | `v <- max(a) ; i <- which.max(a)` | `[v,i] = max(a)` | `WaveStats a`<br>v = V\_max, i = V\_maxRowLoc                               |
 
 ### Vector multiplication
 
@@ -438,10 +438,10 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| | `hist(rnorm(1000))` | `hist(randn(1000,1))` |
-| | `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` |
-| | `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` |
-| | `plot(apply(a,1,sort),type="l")` | `plot(sort(a))` |
+| | `hist(rnorm(1000))` | `hist(randn(1000,1))` | *?* |
+| | `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` | *?* |
+| | `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` | | *?* |
+| | `plot(apply(a,1,sort),type="l")` | `plot(sort(a))` | *?* |
 
 
 ### 3d data
@@ -450,51 +450,50 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Contour plot | `contour(z)` | `contour(z)` | Contour plot |
-| Filled contour plot | `filled.contour(x,y,z,`<br>`nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | Filled contour plot |
-| Plot image data | `image(z, col=gray.colors(256))` | `image(z)`<br>`colormap(gray)` | Plot image data |
-| Direction field vectors | | `quiver()` | Direction field vectors |
+| Contour plot | `contour(z)` | `contour(z)` | `Display; AppendMatrixContour z` |
+| Filled contour plot | `filled.contour(x,y,z,`<br>`nlevels=7, color=gray.colors)` | `contourf(z); colormap(gray)` | `Display; AppendMatrixContour z`<br>`ModifyContour z fill=1` |
+| Plot image data | `image(z, col=gray.colors(256))` | `image(z)`<br>`colormap(gray)` | `newimage z` *or*<br>`display;appendimage z` |
+| Direction field vectors | | `quiver()` | `DisplayHelpTopic "ModifyGraph for Traces"` |
 
 ### Perspective plots of surfaces over the x-y plane
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
 | | `f <- function(x,y) x*exp(-x^2-y^2)`<br>`n <- seq(-2,2, length=40)`<br>`z <- outer(n,n,f)` | `n=-2:.1:2;`<br>`[x,y] = meshgrid(n,n);`<br>`z=x.*exp(-x.^2-y.^2);` |
-| Mesh plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` ticktype='detailed')` | `mesh(z)` | Mesh plot |
-| Surface plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` *or* `surfl(x,y,z)` | Surface plot |
+| Mesh plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` ticktype='detailed')` | `mesh(z)` | `ImageInterpolate/CMSH voronoi a`<br>`AppendToGizmo surface=root:a,name=surface0`<br>`ModifyGizmo ModifyObject=surface0,objectType=surface,property={ fillMode,3}` |
+| Surface plot | `persp(x,y,z,`<br>` theta=30, phi=30, expand=0.6,`<br>` col='lightblue', shade=0.75, ltheta=120,`<br>` ticktype='detailed')` | `surf(x,y,z)` *or* `surfl(x,y,z)` | `Concatenate {x,y,z},wave3D`<br>`NewGizmo`<br>`AppendToGizmo Scatter=root:wave3d,name=surface0` |
 
 
 ### Scatter (cloud) plots
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| 3d scatter plot | `cloud(z~x*y)` | `plot3(x,y,z,'k+')` | 3d scatter plot |
+| 3d scatter plot | `cloud(z~x*y)` | `plot3(x,y,z,'k+')` | `Concatenate {x,y,z},wave3D`<br>`NewGizmo`<br>`AppendToGizmo Scatter=root:wave3d,name=scatter0` |
 
 
 ### Save plot to a graphics file
 
 | Description | R | MATLAB | IGOR |
-| --- | --- | --- |
-| PostScript | `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps` | PostScript |
-| PDF | `pdf(file='foo.pdf')` |  | PDF |
-| SVG (vector graphics for www) | `devSVG(file='foo.svg')` |  | SVG (vector graphics for www) |
-| PNG (raster graphics) | `png(filename = "Rplot%03d.png"` | `print -dpng foo.png` | PNG (raster graphics) |
+| --- | --- | --- | --- |
+| PostScript | `postscript(file="foo.eps")`<br>`plot(1:10)`<br>`dev.off()` | `plot(1:10)`<br>`print -depsc2 foo.eps` | `SavePict/E=-3 as "foo.eps"` |
+| PDF | `pdf(file='foo.pdf')` |  | `SavePict/E=-2 as "foo.pdf"` |
+| SVG (vector graphics for www) | `devSVG(file='foo.svg')` |  | `SavePict/E=-9 as "foo.svg"` |
+| PNG (raster graphics) | `png(filename = "Rplot%03d.png"` | `print -dpng foo.png` | `SavePict/E=-5 as "foo.png"` |
 
 
 ### Data analysis
-
 
 ### Set membership operators
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
 | Create sets | `a <- c(1,2,2,5,2)`<br>`b <- c(2,3,4)` | `a = [ 1 2 2 5 2 ];`<br>`b = [ 2 3 4 ];` | Create sets |
-| Set unique | `unique(a)` | `unique(a)` | Set unique |
-| Set union | `union(a,b)` | `union(a,b)` | Set union |
-| Set intersection | `intersect(a,b)` | `intersect(a,b)` | Set intersection |
-| Set difference | `setdiff(a,b)` | `setdiff(a,b)` | Set difference |
-| Set exclusion | `setdiff(union(a,b),intersect(a,b))` | `setxor(a,b)` | Set exclusion |
-| True for set member | `is.element(2,a)` *or* `2 %in% a` | `ismember(2,a)` | True for set member |
+| Set unique | `unique(a)` | `unique(a)` | `FindDuplicates/RN=c a` |
+| Set union | `union(a,b)` | `union(a,b)` | *?* via loop |
+| Set intersection | `intersect(a,b)` | `intersect(a,b)` | *?* via loop |
+| Set difference | `setdiff(a,b)` | `setdiff(a,b)` | *?* via loop |
+| Set exclusion | `setdiff(union(a,b),intersect(a,b))` | `setxor(a,b)` | *?* via loop |
+| True for set member | `is.element(2,a)` *or* `2 %in% a` | `ismember(2,a)` | `FindValue/I=2 a` |
 
 ### Statistics
 
@@ -511,9 +510,9 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Straight line fit | `z <- lm(y~x)`<br>`plot(x,y)`<br>`abline(z)` | `z = polyval(polyfit(x,y,1),x)`<br>`plot(x,y,'o', x,z ,'-')` | Straight line fit |
-| Linear least squares <br>_y_ = _a__x_ + _b_ | `solve(a,b)` | `a = x\y` | Linear least squares <br>_y_ = _a__x_ + _b_ |
-| Polynomial fit | | `polyfit(x,y,3)` | Polynomial fit |
+| Straight line fit | `z <- lm(y~x)`<br>`plot(x,y)`<br>`abline(z)` | `z = polyval(polyfit(x,y,1),x)`<br>`plot(x,y,'o', x,z ,'-')` | `CurveFit line b /X=a /D ` |
+| Linear least squares <br>_y_ = _a__x_ + _b_ | `solve(a,b)` | `a = x\y` | `MatrixLLS a,b` |
+| Polynomial fit | | `polyfit(x,y,3)` | `CurveFit Poly2D 3 a /Ywave=b  |
 
 ### Non-linear methods
 
@@ -521,17 +520,17 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Find zeros of polynomial | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | Find zeros of polynomial |
-| Find a zero near _x_ = 1 | | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | Find a zero near _x_ = 1 |
-| Solve symbolic equations | | `solve('1/x = x-1')` | Solve symbolic equations |
-| Evaluate polynomial | | `polyval([1 2 1 2],1:10)` | Evaluate polynomial |
+| Find zeros of polynomial | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | *?* |
+| Find a zero near _x_ = 1 | | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | *?* |
+| Solve symbolic equations | | `solve('1/x = x-1')` | *?* |
+| Evaluate polynomial | | `polyval([1 2 1 2],1:10)` | *?* |
  
 ### Differential equations
 
 | Description | R | MATLAB | IGOR                                             |
 |---|---|---|---|
-| Discrete difference function and approximate derivative |          | `diff(a)`     | Discrete difference function and approximate derivative |
-| Solve differential equations                            |          |               | Solve differential equations                            |
+| Discrete difference function and approximate derivative |          | `diff(a)`     | *?* |
+| Solve differential equations                            |          |               | `Differentiate a` *?*                            |
 
 ### Fourier analysis
 
