@@ -537,47 +537,47 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R               | MATLAB | IGOR               |
 |---|---|---|---|
-| Fast fourier transform    | `fft(a)`               | `fft(a)`      | Fast fourier transform    |
-| Inverse fourier transform | `fft(a, inverse=TRUE)` | `ifft(a)`     | Inverse fourier transform |
+| Fast fourier transform    | `fft(a)`               | `fft(a)`      | `FFT a`    |
+| Inverse fourier transform | `fft(a, inverse=TRUE)` | `ifft(a)`     | `IFFT a` |
 
 ### Symbolic algebra; calculus
 
 | Description | R | MATLAB | IGOR   |
 |---|---|---|---|
-| Factorization |          | `factor()`    | Factorization |
+| Factorization | `FUN <- function(x) {`<br>`x <- as.integer(x)`<br>`div <- seq_len(abs(x))`<br>`factors <- div[x %% div == 0L]`<br>`factors <- list(neg = -factors, pos = factors)`<br>`return(factors)`<br>`}`         | `factor()`    | Only `PrimeFactors a` |
 
 ### Programming
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Script file extension | `.R` | `.m` | Script file extension |
-| Comment symbol (rest of line) | `#` | `%` | Comment symbol (rest of line) |
-| Import library functions | `library(RSvgDevice)` | `% must be in MATLABPATH` | Import library functions |
-| Eval | `string <- "a <- 234"`<br>`eval(parse(text=string))` | `string='a=234';`<br>`eval(string)` | Eval |
+| Script file extension | `.R` | `.m` | `.ipf` |
+| Comment symbol (rest of line) | `#` | `%` | `//` |
+| Import library functions | `library(RSvgDevice)` | `% must be in MATLABPATH` | `#include "Name"`<br>without .ipf extension.<br>Must be in User Procedures Folder |
+| Eval | `string <- "a <- 234"`<br>`eval(parse(text=string))` | `string='a=234';`<br>`eval(string)` | `String a = "234"`<br>`str2num(a)` |
 
 ### Loops
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| for-statement | `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` | for-statement |
-| Multiline for statements | `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` | Multiline for statements |
+| for-statement | `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` | `for(i=0;i<10;i+=1)`<br>`print i`<br>`endfor` |
+| Multiline for statements | `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` |  |
 
 ### Conditionals
 
 | Description | R            | MATLAB                 | IGOR                      |
 |---|---|---|---|
-| if-statement                     | `if (1>0) a <- 100` | `if 1>0 a=100; end`           | if-statement                     |
-| if-else-statement                |                     | `if 1>0 a=100; else a=0; end` | if-else-statement                |
-| Ternary operator (if?true:false) | `ifelse(a>0,a,0)`   |                               | Ternary operator (if?true:false) |
+| if-statement                     | `if (1>0) a <- 100` | `if 1>0 a=100; end`           | `if (1 > 0)`<br>`a = 100`<br>`endif`                     |
+| if-else-statement                |                     | `if 1>0 a=100; else a=0; end` | `if (1 < 0)`<br>`a = 100`<br>`else`<br>`a=0 endif`                |
+| Ternary operator (if?true:false) | `ifelse(a>0,a,0)`   |                               | `a = a[] > 0 ? a[p] : 0` |
 
 ### Debugging
 
 | Description | R      | MATLAB                                       | IGOR                       |
 |---|---|---|---|
-| Most recent evaluated expression  | `.Last.value` | `ans`                                               | Most recent evaluated expression  |
-| List variables loaded into memory | `objects()`   | `whos` *or* `who`            | List variables loaded into memory |
-| Clear variable *x* from memory    | `rm(x)`       | `clear x` *or* `clear [all]` | Clear variable *x* from memory    |
-| Print                             | `print(a)`    | `disp(a)`                                           | Print                             |
+| Most recent evaluated expression  | `.Last.value` | `ans`                                               | Arrow up  |
+| List variables loaded into memory | `objects()`   | `whos` *or* `who`            | Data > Data Browser |
+| Clear variable *x* from memory    | `rm(x)`       | `clear x` *or* `clear [all]` | `KillVariables` *or* `KillStrings`*or*`KillWaves`    |
+| Print                             | `print(a)`    | `disp(a)`                    | `Print a`               |
 
 ### Working directory and OS
 
