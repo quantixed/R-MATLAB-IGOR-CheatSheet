@@ -3,7 +3,9 @@ R-MATLAB-IGOR Cheat Sheet
 
 This is a short guide to translate commands in three IDE softwares. R, MATLAB and IGOR Pro equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details.
 
-If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/).
+If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/). The fields with *?* need attention.
+
+Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 or lower.
 
 ----
 
@@ -210,7 +212,7 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Define a matrix | `rbind(c(2,3),c(4,5))`<br>`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | `Make/N=(2,2) a = {2,4},{3,5}` |
+| Define a matrix | `rbind(c(2,3),c(4,5))`<br>`array(c(2,3,4,5), dim=c(2,2))` | `a = [2 3;4 5]` | `Make/N=(2,2) a = {{2,4},{3,5}}` |
 
 ### Concatenation (matrices); rbind and cbind
 
@@ -253,7 +255,7 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Input is a 3,4 array | `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),`<br>`c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | `Make/N=(4,3) a = {11,12,13,14},{21,22,23,24},{31,32,33,34}`<br>`MatrixTranspose a` |
+| Input is a 3,4 array | `a <- rbind(c(11, 12, 13, 14),`<br>`c(21, 22, 23, 24),`<br>`c(31, 32, 33, 34))` | `a = [ 11 12 13 14 ...`<br>`21 22 23 24 ...`<br>`31 32 33 34 ]` | `Make/N=(4,3) a = {{11,12,13,14},{21,22,23,24},{31,32,33,34}}`<br>`MatrixTranspose a` |
 | Element 2,3 (row,col) | `a[2,3]` | `a(2,3)` | `a[1][2]` |
 | First row | `a[1,]` | `a(1,:)` | `a[0][]` |
 | First column | `a[,1]` | `a(:,1)` | `a[][0]` |
@@ -301,12 +303,12 @@ If you can contribute to this cheat sheet (edits, corrections, more categories e
 
 | Description | R             | MATLAB                   | IGOR              |
 |---|---|---|---|
-| `Make/N=(3,3) a = {4,2,1},{3,8,4},{2,6,7}`             |                      | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | Example data             |
-| Flat and sorted          | `t(sort(a))`         | `sort(a(:))`                    | Flat and sorted          |
-| Sort each column         | `apply(a,2,sort)`    | `sort(a)`                       | Sort each column         |
-| Sort each row            | `t(apply(a,1,sort))` | `sort(a')'`                     | Sort each row            |
-| Sort rows (by first row) |                      | `sortrows(a,1)`                 | Sort rows (by first row) |
-| Sort, return indices     | `order(a)`           |                                 | Sort, return indices     |
+|              |  `a <- rbind(c(4,3,2),c(2,8,6),c(1,4,7))`   | `a = [ 4 3 2 ; 2 8 6 ; 1 4 7 ]` | `Make/N=(3,3) a = {{4,2,1},{3,8,4},{2,6,7}}`             |
+| Flat and sorted          | `t(sort(a))`         | `sort(a(:))`                    | `Redimension/N=9 a`<br>`Sort a,a`          |
+| Sort each column         | `apply(a,2,sort)`    | `sort(a)`                       | `SortColumns keywaves={a},sortwaves={a}`         |
+| Sort each row            | `t(apply(a,1,sort))` | `sort(a')'`                     | `SortColumns` following `MatrixTranspose`            |
+| Sort rows (by first row) |                      | `sortrows(a,1)`                 | *?* |
+| Sort, return indices     | `order(a)`           |                                 | `MakeIndex a,b` *?*     |
 
 ### Maximum and minimum
 
