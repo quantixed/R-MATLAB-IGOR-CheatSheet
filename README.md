@@ -369,8 +369,8 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB                        | IGOR          |
 |---|---|---|---|
-| Define a 3-way array |          | `a = cat(3, [1 2; 1 2],[3 4; 3 4]);` | Define a 3-way array |
-| |          | `a(1,:,:)`                           |                      |
+| Define a 3-way array |          | `a = cat(3, [1 2; 1 2],[3 4; 3 4]);` | `Make/N=(2,2,2) a={{{1,1},{2,2}},{{3,3},{4,4}}}` |
+| |          | `a(1,:,:)`                           | `Make/N=(1,2,2) b`<br>`b[0][][]=a[p][q][r]` |
 
 ### File input and output
 
