@@ -219,7 +219,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | Description | R         | MATLAB  | IGOR                          |
 |---|---|---|---|
 | Bind rows                            | `rbind(a,b)`     | `[a ; b]`      | `Concatenate/NP=1 {a,b}, c`                            |
-| Bind columns                         | `cbind(a,b)`     | `[a , b]`      | `Concatenate {a,b}, c`                         |
+| Bind columns                         | `cbind(a,b)`     | `[a , b]`      | `Concatenate/NP=0 {a,b}, c`                         |
 | Concatenate matrices into one vector |                  | `[a(:), b(:)]` | *?* |
 | Bind rows (from vectors)             | `rbind(1:4,1:4)` | `[1:4 ; 1:4]`  | `Make/N=(2,4) a = 1 + q`             |
 | Bind columns (from vectors)          | `cbind(1:4,1:4)` | `[1:4 ; 1:4]'` | `Make/N=(4,2) a = 1 + p`          |
@@ -232,7 +232,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | 1 filled array          | `matrix(1,3,5)` *or* `array(1,c(3,5))` | `ones(3,5)`     | `Make/N=(3,5) a = 1`          |
 | Any number filled array | `matrix(9,3,5)` *or* `array(9,c(3,5))` | `ones(3,5)*9`   | `Make/N=(3,5) a = 9` |
 | Identity matrix         | `diag(1,3)`                                                   | `eye(3)`        | Identity matrix         |
-| Diagonal                | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | *?*                |
+| Diagonal                | `diag(c(4,5,6))`                                              | `diag([4 5 6])` | `Make/N=(3,3) a = 4+p`<br>`MatrixOp b = diagonal(a)`                |
 | Magic squares; Lo Shu   |                                                               | `magic(3)`      | *?*   |
 
 ### Reshape and flatten matrices
@@ -328,19 +328,19 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | Flip left-right | `a[,4:1]` | `fliplr(a)` | `MatrixOp b=reverseRows(a)` |
 | Flip up-down | `a[3:1,]` | `flipud(a)` | `MatrixOp b=reverseCols(a)` |
 | Rotate 90 degrees | | `rot90(a)` | `MatrixOp b=a^t` |
-| Repeat matrix: [ a a a ; a a a ] | `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | Repeat matrix: [ a a a ; a a a ] |
-| Triangular, upper | `a[lower.tri(a)] <- 0` | `triu(a)` | Triangular, upper |
-| Triangular, lower | `a[upper.tri(a)] <- 0` | `tril(a)` | Triangular, lower |
+| Repeat matrix: [ a a a ; a a a ] | `kronecker(matrix(1,2,3),a)` | `repmat(a,2,3)` | `Concatenate/NP=1 {a,a,a},b`<br>`Concatenate/NP=0 {b,b},c` |
+| Triangular, upper | `a[lower.tri(a)] <- 0` | `triu(a)` | *?* |
+| Triangular, lower | `a[upper.tri(a)] <- 0` | `tril(a)` | *?* |
 
 ### Equivalents to “size”
 
 | Description | R         | MATLAB                                       | IGOR                    |
 |---|---|---|---|
-| Matrix dimensions              | `dim(a)`         | `size(a)`                                           | Matrix dimensions              |
-| Number of columns              | `ncol(a)`        | `size(a,2)` *or* `length(a)` | Number of columns              |
-| Number of elements             | `prod(dim(a))`   | `length(a(:))`                                      | Number of elements             |
-| Number of dimensions           |                  | `ndims(a)`                                          | Number of dimensions           |
-| Number of bytes used in memory | `object.size(a)` |                                                     | Number of bytes used in memory |
+| Matrix dimensions              | `dim(a)`         | `size(a)`                                           | `WaveInfo(a)` *or* see Data Browser              |
+| Number of columns              | `ncol(a)`        | `size(a,2)` *or* `length(a)` | `dimsize(a,1)`              |
+| Number of elements             | `prod(dim(a))`   | `length(a(:))`                                      | `numpnts(a)`             |
+| Number of dimensions           |                  | `ndims(a)`                                          | `WaveDims(a)`          |
+| Number of bytes used in memory | `object.size(a)` |                                                     | `WaveInfo(a)` *or* see Data Browser |
 
 ### Matrix- and elementwise- multiplication
 
