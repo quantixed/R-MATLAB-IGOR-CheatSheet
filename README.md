@@ -239,9 +239,9 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | *?* |
-| Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | *?* |
-| Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | *?* |
+| Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | `Make/N=6 a = 1 + p`<br>`Redimension/N=(2,3) a` |
+| Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | As above, then `MatrixTranspose a` |
+| Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | `WaveTranspose a`<br>`Redimension/N=(numpnts(a)) a` |
 | Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | `Redimension/N=(numpnts(a)) a` |
 | Flatten upper triangle (by columns) | `a[row(a) <= col(a)]` | `vech(a)` | *?* |
 
@@ -346,13 +346,13 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R                                                  | MATLAB | IGOR                                                                     |
 |---|---|---|---|
-| Elementwise operations                                                          | `a * b`                                                   | `a .* b`      | Elementwise operations                                                          |
-| Matrix product (dot product) | `a %*% b`                                                 | `a * b`       | Matrix product (dot product)                                                    |
-| Outer product | `outer(a,b)` *or* `a %o% b`        |               | Outer product                                                                   |
-| Cross product | `crossprod(a,b)` *or* `t(a) %*% b` |               | Cross product                                                                   |
-| Kronecker product | `kronecker(a,b)`                                          | `kron(a,b)`   | Kronecker product                                                               |
-| Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |                                                           | `a / b`       | Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |
-| Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) | `solve(a,b)`                                              | `a \ b`       | Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) |
+| Elementwise operations                                                          | `a * b`                                                   | `a .* b`      | `MatrixOp c = a * b`                                                          |
+| Matrix product (dot product) | `a %*% b`                                                 | `a * b`       | `MatrixOp c = a . b`                                                    |
+| Outer product | `outer(a,b)` *or* `a %o% b`        |  `b * a`     | `MatrixMultiply a,b`                                                                   |
+| Cross product | `crossprod(a,b)` *or* `t(a) %*% b` |               | `Cross a,b`                                                                   |
+| Kronecker product | `kronecker(a,b)`                                          | `kron(a,b)`   | `MatrixOp c = tensorProduct(a,b)`                                                               |
+| Matrix division, *b* ⋅ *a*<sup>−1</sup>                                         |                                                           | `a / b`       | `MatrixOp c = a / b`                                         |
+| Left matrix division, *b*<sup>−1</sup> ⋅ *a*<br>(solve linear equations) | `solve(a,b)`                                              | `a \ b`       | *?* |
 
 ### Find; conditional indexing
 
@@ -376,39 +376,38 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R                                    | MATLAB                  | IGOR                  |
 |---|---|---|---|
-| Reading from a file (2d)     | `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
-| Reading from a file (2d)     | `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Reading from a file (2d)     |
-| Reading fram a CSV file (2d) | `f <- read.table(file="data.csv", sep=";")` | `x = dlmread('data.csv', ';')` | Reading fram a CSV file (2d) |
-| Writing to a file (2d)       | `write(f,file="data.txt")`                  | `save -ascii data.txt f`       | Writing to a file (2d)       |
+| Reading from a file (2d)     | `f <- read.table("data.txt")`               | `f = load('data.txt')`         | Data > Load Waves...     |
+| Reading fram a CSV file (2d) | `f <- read.table(file="data.csv", sep=";")` | `x = dlmread('data.csv', ';')` | `LoadWave/J/M/D/N=wave/O/K=0 "data.csv"` |
+| Writing to a file (2d)       | `write(f,file="data.txt")`                  | `save -ascii data.txt f`       | `Save/J/M="\n"/W f as "data.txt"`       |
 
 ###Plotting
 ### Basic x-y plots
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| 1d line plot | `plot(a, type="l")` | `plot(a)` | 1d line plot |
-| 2d scatter plot | `plot(x[,1],x[,2])` | `plot(x(:,1),x(:,2),'o')` | 2d scatter plot |
-| Two graphs in one plot | | `plot(x1,y1, x2,y2)` | Two graphs in one plot |
-| Overplotting: Add new plots to current | `plot(x1,y1)`<br>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<br>`hold on`<br>`plot(x2,y2)` | Overplotting: Add new plots to current |
-| subplots | | `subplot(211)` | subplots |
-| Plotting symbols and color | `plot(x,y,type="b",col="red")` | `plot(x,y,'ro-')` | Plotting symbols and color |
+| 1d line plot | `plot(a, type="l")` | `plot(a)` | `display a` |
+| 2d scatter plot | `plot(x[,1],x[,2])` | `plot(x(:,1),x(:,2),'o')` | `display a vs b` |
+| Two graphs in one plot | | `plot(x1,y1, x2,y2)` | `display a, b` *or* `display a1 vs b1, a2 vs b2` |
+| Overplotting: Add new plots to current | `plot(x1,y1)`<br>`matplot(x2,y2,add=T)` | `plot(x1,y1)`<br>`hold on`<br>`plot(x2,y2)` | `display a; AppendToGraph b` |
+| subplots | | `subplot(211)` | Add to procedure window<br>`#include <InsertSubwindowInGraph>` |
+| Plotting symbols and color | `plot(x,y,type="b",col="red")` | `plot(x,y,'ro-')` | Double-click trace on graph |
 
 ### Axes and titles
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Turn on grid lines | `grid()` | `grid on` | Turn on grid lines |
-| 1:1 aspect ratio | `plot(c(1:10,10:1), asp=1)` | `axis equal` | 1:1 aspect ratio |
-| Set axes manually | `plot(x,y, xlim=c(0,10), ylim=c(0,5))` | `axis([ 0 10 0 5 ])` | Set axes manually |
-| Axis labels and titles | `plot(1:10, main="title",`<br>`xlab="x-axis", ylab="y-axis")` | `title('title')`<br>`xlabel('x-axis')`<br>`ylabel('y-axis')` | Axis labels and titles |
+| Turn on grid lines | `grid()` | `grid on` | `ModifyGraph grid=1` |
+| 1:1 aspect ratio | `plot(c(1:10,10:1), asp=1)` | `axis equal` | `ModifyGraph width={Plan,1,bottom,left}` |
+| Set axes manually | `plot(x,y, xlim=c(0,10), ylim=c(0,5))` | `axis([ 0 10 0 5 ])` | `SetAxis left 0,5`<br>`SetAxis bottom 0,10` |
+| Axis labels and titles | `plot(1:10, main="title",`<br>`xlab="x-axis", ylab="y-axis")` | `title('title')`<br>`xlabel('x-axis')`<br>`ylabel('y-axis')` | `Label left "y-axis"`<br>`Label bottom "x-axis"` |
 
 ### Log plots
 
 | Description | R              | MATLAB | IGOR              |
 |---|---|---|---|
-| logarithmic y-axis       | `plot(x,y, log="y")`  | `semilogy(a)` | logarithmic y-axis       |
-| logarithmic x-axis       | `plot(x,y, log="x")`  | `semilogx(a)` | logarithmic x-axis       |
-| logarithmic x and y axes | `plot(x,y, log="xy")` | `loglog(a)`   | logarithmic x and y axes |
+| logarithmic y-axis       | `plot(x,y, log="y")`  | `semilogy(a)` | `ModifyGraph log(left)=1`       |
+| logarithmic x-axis       | `plot(x,y, log="x")`  | `semilogx(a)` | `ModifyGraph log(bottom)=1`       |
+| logarithmic x and y axes | `plot(x,y, log="xy")` | `loglog(a)`   | `ModifyGraph log=1` |
 
 ### Filled plots and bar plots
 
