@@ -242,7 +242,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | Reshaping (rows first) | `matrix(1:6,nrow=3,byrow=T)` | `reshape(1:6,3,2)';` | *?* |
 | Reshaping (columns first) | `matrix(1:6,nrow=2)`<br>`array(1:6,c(2,3))` | `reshape(1:6,2,3);` | *?* |
 | Flatten to vector (by rows, like comics) | `as.vector(t(a))` | `a'(:)` | *?* |
-| Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | *?* |
+| Flatten to vector (by columns) | `as.vector(a)` | `a(:)` | `Redimension/N=(numpnts(a)) a` |
 | Flatten upper triangle (by columns) | `a[row(a) <= col(a)]` | `vech(a)` | *?* |
 
 ### Shared data (slicing)
@@ -272,7 +272,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 |---|---|---|---|
 | | `a[,1] <- 99`          | `a(:,1) = 99`          | `a[][1] = 99`                      |
 | | `a[,1] <- c(99,98,97)` | `a(:,1) = [99 98 97]'` | `a[][1] = {99,98,97}` *or* `a[][1] = 99 - p`                         |
-| Clipping: Replace all elements over 90 | `a[a>90] <- 90`        | `a(a>90) = 90;`        | `a = a[p][q] > 90 ? 90 : a[p][q]` |
+| Clipping: Replace all elements over 90 | `a[a>90] <- 90`        | `a(a>90) = 90;`        | `a = (a[p][q] > 90) ? 90 : a[p][q]` |
 
 ### Transpose and inverse
 
@@ -358,12 +358,12 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R                                     | MATLAB       | IGOR                      |
 |---|---|---|---|
-| Non-zero elements, indices | `which(a != 0)`                              | `find(a)`           | Non-zero elements, indices       |
-| Non-zero elements, array indices | `which(a != 0, arr.ind=T)`                   | `[i j] = find(a)`   | Non-zero elements, array indices |
-| Vector of non-zero values | `ij <- which(a != 0, arr.ind=T); v <- a[ij]` | `[i j v] = find(a)` | Vector of non-zero values        |
-| Condition, indices               | `which(a>5.5)`                               | `find(a>5.5)`       | Condition, indices               |
-| Return values | `ij <- which(a>5.5, arr.ind=T); v <- a[ij]`  |                     | Return values                    |
-| Zero out elements above 5.5 |                                              | `a .* (a>5.5)`      | Zero out elements above 5.5      |
+| Non-zero elements, indices | `which(a != 0)`                              | `find(a)`           | `Duplicate a,b` `b = (a != 0) ? p : NaN`<br>`WaveTransform zapnans b`       |
+| Non-zero elements, array indices | `which(a != 0, arr.ind=T)`                   | `[i j] = find(a)`   | Write a loop |
+| Vector of non-zero values | `ij <- which(a != 0, arr.ind=T); v <- a[ij]` | `[i j v] = find(a)` | `a = (a[p][q] != 0) ? a[p][q] : NaN`<br>`Redimension/N=(numpnts(a)) a`<br>`WaveTransform a`      |
+| Condition, indices               | `which(a>5.5)`                               | `find(a>5.5)`       | `Duplicate a,b` `b = a[p][q] > 5.5 ? p : NaN`<br>`WaveTransform zapnans b`               |
+| Return values | `ij <- which(a>5.5, arr.ind=T); v <- a[ij]`  |                     | `Duplicate a,b` `b = a[p][q] > 5.5 ? a[p][q] : NaN`<br>`WaveTransform zapnans b`                    |
+| Zero out elements above 5.5 |                                              | `a .* (a>5.5)`      | `a = (a[p][q] > 5.5) ? 0 : a[p][q]`      |
 
 ### Multi-way arrays
 
