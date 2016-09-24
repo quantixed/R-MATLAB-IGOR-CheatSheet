@@ -1,7 +1,7 @@
 R-MATLAB-IGOR Cheat Sheet
 =========================
 
-This is a short guide to translate commands in three IDE softwares. R, MATLAB and IGOR Pro equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details.
+This is a short guide to translate commands in three different numerical analysis software packages: R, MATLAB and IGOR Pro. Equivalents are given for commands, gathered under a set of headings. This work is mainly by Vidar Bronken Gundersen and Ben Gallarda, see [Credits](#credits) for details.
 
 If you can contribute to this cheat sheet (edits, corrections, more categories etc.), please use [GitHub's fork/pull/propose changes facility](https://help.github.com/articles/editing-files-in-another-user-s-repository/). The fields with *?* need attention.
 
@@ -9,9 +9,25 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 ----
 
-*Table of contents*: [**Help**](#help) |[**Searching available documentation**](#searching-available-documentation) |[**Using interactively**](#using-interactively) |[**Operators**](#operators) |[**Arithmetic operators**](#arithmetic-operators) |[**Relational operators**](#relational-operators) |[**Logical operators**](#logical-operators) |[**root and logarithm**](#root-and-logarithm) |[**Round off**](#round-off) |[**Mathematical constants**](#mathematical-constants) |[**Missing values**](#missing-values) |[**Complex numbers**](#complex-numbers) |[**Trigonometry**](#trigonometry) |[**Generate random numbers**](#generate-random-numbers) |[**Vectors**](#vectors) |[**Sequences**](#sequences) |[**Concatenation (vectors)**](#concatenation-vectors) |[**Repeating**](#repeating) |[**Miss those elements out**](#miss-those-elements-out) |[**Maximum and minimum**](#maximum-and-minimum) |[**Vector multiplication**](#vector-multiplication) |[**Matrices**](#matrices) |[**Concatenation (matrices); rbind and cbind**](#concatenation-matrices-rbind-and-cbind) |[**Array creation**](#array-creation) |[**Reshape and flatten matrices**](#reshape-and-flatten-matrices) |[**Shared data (slicing)**](#shared-data-slicing) |[**Indexing and accessing elements (Python: slicing)**](#indexing-and-accessing-elements-python-slicing) |[**Assignment**](#assignment) |[**Transpose and inverse**](#transpose-and-inverse) |[**Sum**](#sum) |[**Sorting**](#sorting) |[**Maximum and minimum**](#maximum-and-minimum) |[**Matrix manipulation**](#matrix-manipulation) |[**Equivalents to “size”**](#equivalents-to-size) |[**Matrix- and elementwise- multiplication**](#matrix--and-elementwise--multiplication) |[**Find; conditional indexing**](#find;-conditional-indexing) |[**Multi-way arrays**](#multi-way-arrays) |[**File input and output**](#file-input-and-output) |[**Plotting**](#plotting) |[**Basic x-y plots**](#basic-x-y-plots) |[**Axes and titles**](#axes-and-titles) |[**Log plots**](#log-plots) |[**Filled plots and bar plots**](#filled-plots-and-bar-plots) |[**Functions**](#functions) |[**Polar plots**](#polar-plots) |[**Histogram plots**](#histogram-plots) |[**3d data**](#3d-data) |[**Contour and image plots**](#contour-and-image-plots) |[**Perspective plots of surfaces over the x-y plane**](#perspective-plots-of-surfaces-over-the-x-y-plane) |[**Scatter (cloud) plots**](#scatter-(cloud)-plots) |[**Save plot to a graphics file**](#save-plot-to-a-graphics-file) |[**Data analysis**](#data-analysis) |[**Set membership operators**](#set-membership-operators) |[**Statistics**](#statistics) |[**Interpolation and regression**](#interpolation-and-regression) |[**Non-linear methods**](#non-linear-methods) |[**Polynomials, root finding**](#polynomials-root-finding) |[**Differential equations**](#differential-equations) |[**Fourier analysis**](#fourier-analysis) |[**Symbolic algebra; calculus**](#symbolic-algebra-calculus) |[**Programming**](#programming) |[**Loops**](#loops) |[**Conditionals**](#conditionals) |[**Debugging**](#debugging) |[**Working directory and OS**](#working-directory-and-os) |[**Credits**](#credits) |
+##Table of contents
+[**Basics and Terminology**](#basics-and-terminology) |
+[**Help**](#help) |[**Searching available documentation**](#searching-available-documentation) |[**Using interactively**](#using-interactively) |[**Operators**](#operators) |[**Arithmetic operators**](#arithmetic-operators) |[**Relational operators**](#relational-operators) |[**Logical operators**](#logical-operators) |[**root and logarithm**](#root-and-logarithm) |[**Round off**](#round-off) |[**Mathematical constants**](#mathematical-constants) |[**Missing values**](#missing-values) |[**Complex numbers**](#complex-numbers) |[**Trigonometry**](#trigonometry) |[**Generate random numbers**](#generate-random-numbers) |[**Vectors**](#vectors) |[**Sequences**](#sequences) |[**Concatenation (vectors)**](#concatenation-vectors) |[**Repeating**](#repeating) |[**Miss those elements out**](#miss-those-elements-out) |[**Maximum and minimum**](#maximum-and-minimum) |[**Vector multiplication**](#vector-multiplication) |[**Matrices**](#matrices) |[**Concatenation (matrices); rbind and cbind**](#concatenation-matrices-rbind-and-cbind) |[**Array creation**](#array-creation) |[**Reshape and flatten matrices**](#reshape-and-flatten-matrices) |[**Shared data (slicing)**](#shared-data-slicing) |[**Indexing and accessing elements (Python: slicing)**](#indexing-and-accessing-elements-python-slicing) |[**Assignment**](#assignment) |[**Transpose and inverse**](#transpose-and-inverse) |[**Sum**](#sum) |[**Sorting**](#sorting) |[**Maximum and minimum**](#maximum-and-minimum) |[**Matrix manipulation**](#matrix-manipulation) |[**Equivalents to “size”**](#equivalents-to-size) |[**Matrix- and elementwise- multiplication**](#matrix--and-elementwise--multiplication) |[**Find; conditional indexing**](#find;-conditional-indexing) |[**Multi-way arrays**](#multi-way-arrays) |[**File input and output**](#file-input-and-output) |[**Plotting**](#plotting) |[**Basic x-y plots**](#basic-x-y-plots) |[**Axes and titles**](#axes-and-titles) |[**Log plots**](#log-plots) |[**Filled plots and bar plots**](#filled-plots-and-bar-plots) |[**Functions**](#functions) |[**Polar plots**](#polar-plots) |[**Histogram plots**](#histogram-plots) |[**3d data**](#3d-data) |[**Contour and image plots**](#contour-and-image-plots) |[**Perspective plots of surfaces over the x-y plane**](#perspective-plots-of-surfaces-over-the-x-y-plane) |[**Scatter (cloud) plots**](#scatter-(cloud)-plots) |[**Save plot to a graphics file**](#save-plot-to-a-graphics-file) |[**Data analysis**](#data-analysis) |[**Set membership operators**](#set-membership-operators) |[**Statistics**](#statistics) |[**Interpolation and regression**](#interpolation-and-regression) |[**Non-linear methods**](#non-linear-methods) |[**Polynomials, root finding**](#polynomials-root-finding) |[**Differential equations**](#differential-equations) |[**Fourier analysis**](#fourier-analysis) |[**Symbolic algebra; calculus**](#symbolic-algebra-calculus) |[**Programming**](#programming) |[**Loops**](#loops) |[**Conditionals**](#conditionals) |[**Debugging**](#debugging) |[**Working directory and OS**](#working-directory-and-os) |[**Credits**](#credits) |
 
 ----
+
+### Basics and Terminology
+
+| Description | R | MATLAB | IGOR |
+|---|---|---|---|
+| Indexing | 1-based | 1-based | 0-based |
+| Case sEnSiTiVe | Yes | Yes | No |
+| Scalar | Variable | Scalar | Variable |
+| List of numbers | Vector | Vector | 1D Wave<br>equivalent to column vector |
+| Matrix of numbers | Matrix | Matrix | 2D Wave *or* Matrix |
+| Higher dimensions | Yes | Yes | Yes<br>Rows = p<br>Columns = q<br>Layers = r<br>Chunks = s |
+| Variables and<br>number types | `int`<br>`num` = Double<br>`logi`<br>Use `lubridate`<br>`complex` | 4 integer types<br>Double<br>*?*<br>Use `datenum`<br>Complex number type | `Make/B a` *or* `Variable` *or* `NVAR`<br>`Make/D a` *or* `Variable` *or* `NVAR`<br>*?*<br>Date/Time Wave<br>Complex number type |
+| Text | `chr` | *?* | TextWave:<br>`Make/T a` *or* `String` *or* `SVAR` |
+| Mixed-type "matrix" | Yes<br>Data Frame | Yes<br>struct | Generally no<br>Possible with `.id` |
 
 ### Help
 
@@ -317,7 +333,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | max in each column | `apply(a,2,max)`            | `max(a)`         | `MatrixOp b=maxCols(a)` |
 | max in each row    | `apply(a,1,max)`            | `max(a')`        | `MatrixOp b=a^t`<br>`MatrixOp c=maxCols(b)`    |
 | max in array       | `max(a)`                    | `max(max(a))`    | `MatrixOp b=maxVal(a)`<br>*or* `WaveStats a`       |
-| return indices, i  | `i <- apply(a,1,which.max)` | `[v i] = max(a)` | return indices, i  |
+| return indices, i  | `i <- apply(a,1,which.max)` | `[v i] = max(a)` | `WaveStats a`<br>V\_maxRowLoc V\_maxColLoc  |
 | pairwise max       | `pmax(b,c)`                 | `max(b,c)`       | `max(b,c)`       |
 | | `apply(a,2,cummax)`         | `cummax(a)`      | `max(sum(b),sum(c))`                   |
 
@@ -430,16 +446,16 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
 | | | `theta = 0:.001:2*pi;`<br>`r = sin(2*theta);` | |
-| | | `polar(theta, rho)` | |
+| Polar plot | See `polar.plot` | `polar(theta, rho)` | `#include <New Polar Graphs>`<br>in procedure window |
 
 
 ### Histogram plots
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| | `hist(rnorm(1000))` | `hist(randn(1000,1))` | *?* |
-| | `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` | *?* |
-| | `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` | | *?* |
+| | `hist(rnorm(1000))` | `hist(randn(1000,1))` | `Make/O/N=1000 a=gnoise(1)`<br>`Make/N=0/O a_Hist`<br>`Histogram/B=3 a,a_Hist`<br>`Display a_Hist` |
+| | `hist(rnorm(1000), breaks= -4:4)` | `hist(randn(1000,1), -4:4)` | As above except<br>`Make/N=8/O a_Hist`<br>`Histogram/B={-4,1,8} a,a_Hist` |
+| | `hist(rnorm(1000),`<br>`breaks=c(seq(-5,0,0.25),`<br>`seq(0.5,5,0.5)), freq=F)` | | Concatenate two sub-histograms |
 | | `plot(apply(a,1,sort),type="l")` | `plot(sort(a))` | *?* |
 
 
@@ -519,7 +535,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Find zeros of polynomial | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | *?* |
+| Find zeros of polynomial | `polyroot(c(1,-1,-1))` | `roots([1 -1 -1])` | `Make a={1,-1,-1}`<br>`FindRoots/P=a` |
 | Find a zero near _x_ = 1 | | `f = inline('1/x - (x-1)')`<br>`fzero(f,1)` | *?* |
 | Solve symbolic equations | | `solve('1/x = x-1')` | *?* |
 | Evaluate polynomial | | `polyval([1 2 1 2],1:10)` | *?* |
@@ -557,8 +573,8 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| for-statement | `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` | `for(i=0;i<10;i+=1)`<br>`print i`<br>`endfor` |
-| Multiline for statements | `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` |  |
+| for-statement | `for(i in 1:5) print(i)` | `for i=1:5; disp(i); end` |  |
+| Multiline for statements | `for(i in 1:5) {`<br>`print(i)`<br>`print(i*2)`<br>`}` | `for i=1:5`<br>`disp(i)`<br>`disp(i*2)`<br>`end` | `for(i=0;i<10;i+=1)`<br>`print i`<br>`endfor` |
 
 ### Conditionals
 
