@@ -413,16 +413,16 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Filled plot | `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')` | Filled plot |
-| Stem-and-Leaf plot | `stem(x[,3])` | | Stem-and-Leaf plot |
+| Filled plot | `plot(t,s, type="n", xlab="", ylab="")`<br>`polygon(t,s, col="lightblue")`<br>`polygon(t,c, col="lightgreen")` | `fill(t,s,'b', t,c,'g')` | `Display a`<br>`ModifyGraph mode=7` |
+| Stem-and-Leaf plot | `stem(x[,3])` | | *?* |
 
 
 ### Functions
 
 | Description | R | MATLAB | IGOR |
 |---|---|---|---|
-| Defining functions | `f <- function(x) sin(x/3) - cos(x/5)` | `f = inline('sin(x/3) - cos(x/5)')` | Defining functions |
-| Plot a function for given range | `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])` | Plot a function for given range |
+| Defining functions | `f <- function(x) sin(x/3) - cos(x/5)` | `f = inline('sin(x/3) - cos(x/5)')` | `Make a = sin(x/3) - cos(x/5`<br>Default wave length is 128 |
+| Plot a function for given range | `plot(f, xlim=c(0,40), type='p')` | `ezplot(f,[0,40])`<br>`fplot('sin(x/3) - cos(x/5)',[0,40])` | `Display a[0,40]` |
 
 
 ### Polar plots
