@@ -111,7 +111,7 @@ Note that some commands use IGOR Pro 7 and are not compatible with IGOR Pro 6.3 
 | Square root | `sqrt(a)`  | `sqrt(a)`     | `sqrt(a)`                   |
 | Logarithm, base *e* (natural) | `log(a)`   | `log(a)`      | `ln(a)` |
 | Logarithm, base 10            | `log10(a)` | `log10(a)`    | `log(a)`            |
-| Logarithm, base 2 (binary)    | `log2(a)`  | `log2(a)`     | `log2(a)`    |
+| Logarithm, base 2 (binary)    | `log2(a)`  | `log2(a)`     | `log(a) / log(2)`    |
 | Exponential function          | `exp(a)`   | `exp(a)`      | `exp(a)`          |
 
 ### Round off
